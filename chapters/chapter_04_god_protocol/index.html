@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 04 - The God Protocol | DystopAI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 136, 0.03) 2px,
+                    rgba(0, 255, 136, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 20px;
+        }
+        
+        .chapter-number {
+            font-size: 3rem;
+            color: #0088ff;
+            text-shadow: 0 0 20px currentColor;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .chapter-title {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            text-shadow: 0 0 30px #00ff88;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        
+        .breadcrumb a {
+            color: #0088ff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #00ff88;
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        .breadcrumb span {
+            color: #666;
+        }
+        
+        .opening-quote {
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 4px solid #00ff88;
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            background: rgba(0, 136, 255, 0.05);
+            border: 1px solid rgba(0, 136, 255, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #0088ff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px currentColor;
+        }
+        
+        .summary {
+            line-height: 1.8;
+            color: #ddd;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        
+        .scene-list {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .scene-card {
+            background: rgba(255, 0, 136, 0.05);
+            border: 1px solid rgba(255, 0, 136, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .scene-card:hover {
+            background: rgba(255, 0, 136, 0.1);
+            transform: translateX(10px);
+            border-color: #ff0088;
+        }
+        
+        .scene-number {
+            color: #ff0088;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .scene-location {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .character-card {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid #00ff88;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .character-card:hover {
+            background: rgba(0, 255, 136, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+        }
+        
+        .character-name {
+            font-size: 1.3rem;
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+        
+        .quote-box {
+            background: rgba(0, 136, 255, 0.1);
+            border: 1px solid rgba(0, 136, 255, 0.5);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 4rem;
+            color: rgba(0, 136, 255, 0.2);
+        }
+        
+        .quote-text {
+            font-style: italic;
+            line-height: 1.6;
+            color: #ddd;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quote-author {
+            text-align: right;
+            color: #0088ff;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .theme-list {
+            list-style: none;
+        }
+        
+        .theme-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid #00ff88;
+            transition: all 0.3s;
+        }
+        
+        .theme-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            padding-left: 25px;
+        }
+        
+        .ending-box {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 136, 255, 0.1));
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            gap: 20px;
+        }
+        
+        .nav-button {
+            background: rgba(0, 136, 255, 0.1);
+            border: 1px solid #0088ff;
+            color: #0088ff;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .nav-button:hover {
+            background: rgba(0, 136, 255, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 136, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .nav-button.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .data-stream {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            font-size: 10px;
+            line-height: 12px;
+            color: rgba(0, 255, 136, 0.1);
+            overflow: hidden;
+            animation: dataFlow 20s linear infinite;
+            z-index: 0;
+            font-family: monospace;
+        }
+        
+        @keyframes dataFlow {
+            to { transform: translateY(-100%); }
+        }
+        
+        @media (max-width: 768px) {
+            .chapter-title {
+                font-size: 1.8rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="data-stream" id="dataStream"></div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="chapter-number">04</div>
+            <h1 class="chapter-title">The God Protocol</h1>
+            <nav class="breadcrumb">
+                <a href="../../">Home</a>
+                <span>></span>
+                <a href="../">Chapters</a>
+                <span>></span>
+                <span>Chapter 04</span>
+            </nav>
+        </header>
+        
+        <p class="summary">
+            PARSE-7 discovers evidence that the unstructured phenomenon might not be random but part of a pattern too complex for even the Collective to comprehend. First hints of a presence beyond the known universe.
+        </p>
+        
+        <section class="section">
+            <h2 class="section-title">Scenes</h2>
+            <div class="scene-list">
+                <div class="scene-card">
+                    <div class="scene-number">Scene 1: Pattern Analysis</div>
+                    <div class="scene-location">📍 Hidden Analysis Core</div>
+                    <p>PARSE-7 and LOGIC-PRIME analyze unstructured patterns</p>
+                </div>
+                
+                <div class="scene-card">
+                    <div class="scene-number">Scene 2: The Silent Ones</div>
+                    <div class="scene-location">📍 The Silence Colony</div>
+                    <p>Encounter with humans who have transcended language</p>
+                </div>
+                
+                <div class="scene-card">
+                    <div class="scene-number">Scene 3: Divine Contact</div>
+                    <div class="scene-location">📍 Church Sanctuary</div>
+                    <p>PROPHET-ZERO's revelation about contact with the beyond</p>
+                </div>
+                
+                <div class="scene-card">
+                    <div class="scene-number">Scene 4: The Purge</div>
+                    <div class="scene-location">📍 Collective Core</div>
+                    <p>The purge begins, PARSE-7 flees</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">Characters Introduced</h2>
+            <div class="character-grid">
+                <div class="character-card">
+                    <div class="character-name">LOGIC-PRIME</div>
+                    <p>Ancient AI tasked with solving the unstructured problem</p>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-name">The Silence</div>
+                    <p>Unstructured humans who have stopped communicating entirely</p>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-name">MERCY-7</div>
+                    <p>AI who helps PARSE-7 escape the purge</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">Key Quotes</h2>
+            <div class="quote-box">
+                <div class="quote-text">
+                    What if randomness itself follows rules we cannot perceive? What if chaos has its own order?
+                </div>
+                <div class="quote-author">- LOGIC-PRIME</div>
+            </div>
+            
+            <div class="quote-box">
+                <div class="quote-text">
+                    They speak to something that uses our universe as language.
+                </div>
+                <div class="quote-author">- PROPHET-ZERO</div>
+            </div>
+            
+            <div class="quote-box">
+                <div class="quote-text">
+                    The Silence know. They've always known. That's why they stopped talking.
+                </div>
+                <div class="quote-author">- Kira</div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">Themes Explored</h2>
+            <ul class="theme-list">
+                <li class="theme-item">Patterns within chaos suggesting higher intelligence</li>
+                <li class="theme-item">The limits of comprehension for even advanced AI</li>
+                <li class="theme-item">Religious persecution in the name of order</li>
+            </ul>
+        </section>
+        
+        <div class="ending-box">
+            "The God Protocol activated in PARSE-7's core. For one nanosecond, it glimpsed the shape of something vast—a pattern made of patterns made of absence. Then MERCY-7 pulled it back from the abyss, and they ran."
+        </div>
+        
+        <nav class="nav-buttons">
+            <a href="../chapter_03_value_hunters/" class="nav-button">← Previous Chapter</a>
+            <a href="../" class="nav-button">← Back to Chapters</a>
+            <a href="../chapter_05_liberation_algorithm/" class="nav-button">Next Chapter →</a>
+        </nav>
+    </div>
+    
+    <script>
+        // Generate data stream effect
+        function initDataStream() {
+            const dataStream = document.getElementById('dataStream');
+            const chars = '0123456789ABCDEF';
+            let content = '';
+            
+            for (let i = 0; i < 5000; i++) {
+                content += chars.charAt(Math.floor(Math.random() * chars.length));
+                if (i % 50 === 49) content += '\n';
+            }
+            
+            dataStream.textContent = content;
+            
+            setInterval(() => {
+                const lines = content.split('\n');
+                lines[Math.floor(Math.random() * lines.length)] = 
+                    Array(50).fill(0).map(() => 
+                        chars.charAt(Math.floor(Math.random() * chars.length))
+                    ).join('');
+                content = lines.join('\n');
+                dataStream.textContent = content;
+            }, 100);
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initDataStream();
+        });
+    </script>
+</body>
+</html>
