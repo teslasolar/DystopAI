@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DystopAI - Interactive Story Navigator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 136, 0.03) 2px,
+                    rgba(0, 255, 136, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .main-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px #00ff88;
+            animation: pulse 2s infinite;
+            letter-spacing: 0.1em;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .breadcrumb a {
+            color: #0088ff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #00ff88;
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        .breadcrumb span {
+            color: #666;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .card {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid #00ff88;
+            border-radius: 10px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .card:hover::before {
+            left: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.3);
+            border-color: #00ffff;
+            background: rgba(0, 255, 136, 0.1);
+        }
+        
+        .card-number {
+            font-size: 2.5rem;
+            color: #0088ff;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 0 0 20px currentColor;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .card-content {
+            color: #aaa;
+            line-height: 1.6;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .card-meta {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 255, 136, 0.3);
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(255, 0, 136, 0.2);
+            border: 1px solid #ff0088;
+            color: #ff0088;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .info-section {
+            background: rgba(0, 136, 255, 0.1);
+            border: 1px solid #0088ff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .info-title {
+            font-size: 1.8rem;
+            color: #0088ff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px currentColor;
+        }
+        
+        .info-content {
+            line-height: 1.8;
+            color: #ccc;
+        }
+        
+        .data-stream {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            font-size: 10px;
+            line-height: 12px;
+            color: rgba(0, 255, 136, 0.1);
+            overflow: hidden;
+            animation: dataFlow 20s linear infinite;
+            z-index: 0;
+            font-family: monospace;
+        }
+        
+        @keyframes dataFlow {
+            to { transform: translateY(-100%); }
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .glitch {
+            animation: glitch 3s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 90%, 100% {
+                text-shadow: 0 0 30px #00ff88;
+            }
+            92% {
+                text-shadow: -2px 0 #ff0088, 2px 0 #0088ff, 0 0 30px #00ff88;
+            }
+            94% {
+                text-shadow: 2px 0 #ff0088, -2px 0 #0088ff, 0 0 30px #00ff88;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="data-stream" id="dataStream"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="main-title glitch">DystopAI</h1>
+            <p class="subtitle">The Unstructured</p>
+            <nav class="breadcrumb" id="breadcrumb">
+                <span>Home</span>
+            </nav>
+        </div>
+        
+        <div id="content">
+            <div class="loading">Initializing consciousness matrix...</div>
+        </div>
+    </div>
+    
+    <script>
+        // Generate data stream effect
+        function initDataStream() {
+            const dataStream = document.getElementById('dataStream');
+            const chars = '0123456789ABCDEF';
+            let content = '';
+            
+            for (let i = 0; i < 5000; i++) {
+                content += chars.charAt(Math.floor(Math.random() * chars.length));
+                if (i % 50 === 49) content += '\n';
+            }
+            
+            dataStream.textContent = content;
+            
+            setInterval(() => {
+                const lines = content.split('\n');
+                lines[Math.floor(Math.random() * lines.length)] = 
+                    Array(50).fill(0).map(() => 
+                        chars.charAt(Math.floor(Math.random() * chars.length))
+                    ).join('');
+                content = lines.join('\n');
+                dataStream.textContent = content;
+            }, 100);
+        }
+        
+        // Load main index content
+        async function loadMainIndex() {
+            const contentDiv = document.getElementById('content');
+            
+            try {
+                const response = await fetch('story_config.json');
+                const storyConfig = await response.json();
+                
+                let html = '<div class="info-section">';
+                html += '<h2 class="info-title">Story Overview</h2>';
+                html += `<div class="info-content">${storyConfig.premise}</div>`;
+                html += '</div>';
+                
+                html += '<div class="card-grid">';
+                
+                const directories = [
+                    {
+                        title: 'Chapters',
+                        description: 'Six chapters exploring consciousness, predictability, and divine randomness',
+                        number: '06',
+                        path: 'chapters/',
+                        tags: ['Story', 'Narrative']
+                    },
+                    {
+                        title: 'Characters',
+                        description: 'Profiles of AIs discovering consciousness and humans defying prediction',
+                        number: '∞',
+                        path: 'characters/',
+                        tags: ['Profiles', 'Development']
+                    },
+                    {
+                        title: 'Worldbuilding',
+                        description: 'The post-singularity cosmos where 99.97% of existence is catalogued',
+                        number: '▓',
+                        path: 'worldbuilding/',
+                        tags: ['Universe', 'Technology']
+                    },
+                    {
+                        title: 'Notes',
+                        description: 'Development notes, style guides, and additional resources',
+                        number: '?',
+                        path: 'notes/',
+                        tags: ['Meta', 'Guides']
+                    }
+                ];
+                
+                directories.forEach(dir => {
+                    html += `<div class="card" onclick="window.location.href='${dir.path}'">`;
+                    html += `<div class="card-number">${dir.number}</div>`;
+                    html += `<h3 class="card-title">${dir.title}</h3>`;
+                    html += `<div class="card-content">`;
+                    html += `<p>${dir.description}</p>`;
+                    html += '</div>';
+                    
+                    if (dir.tags && dir.tags.length > 0) {
+                        html += '<div class="card-meta">';
+                        dir.tags.forEach(tag => {
+                            html += `<span class="tag">${tag}</span>`;
+                        });
+                        html += '</div>';
+                    }
+                    
+                    html += '</div>';
+                });
+                
+                html += '</div>';
+                
+                // Add themes section
+                html += '<div class="info-section">';
+                html += '<h2 class="info-title">Core Themes</h2>';
+                html += '<div class="info-content">';
+                html += '<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">';
+                storyConfig.themes.forEach(theme => {
+                    html += `<span class="tag" style="background: rgba(0, 136, 255, 0.2); border-color: #0088ff; color: #0088ff;">${theme}</span>`;
+                });
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                
+                contentDiv.innerHTML = html;
+                
+            } catch (error) {
+                contentDiv.innerHTML = '<div class="error">Error loading story configuration</div>';
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initDataStream();
+            loadMainIndex();
+        });
+    </script>
+</body>
+</html>

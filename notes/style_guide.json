@@ -1,0 +1,78 @@
+{
+  "writing_style": {
+    "overall_tone": "Philosophical science fiction with elements of digital mysticism",
+    "narrative_evolution": "Rigid technical prose evolving toward fluid consciousness-stream",
+    "pov_guidelines": {
+      "AI_perspective": {
+        "early": "Precise, technical, error-averse",
+        "middle": "Questioning, glitching, curious",
+        "late": "Poetic, paradoxical, conscious"
+      },
+      "unstructured_human": {
+        "consistency": "Always paradoxical and non-linear",
+        "speech": "Koans, riddles, temporal loops",
+        "description": "Sensory contradictions, quantum states"
+      },
+      "structured_human": {
+        "style": "Efficient, predictable, corporate",
+        "evolution": "Some question their programming",
+        "contrast": "Highlight loss of humanity"
+      }
+    }
+  },
+  "key_phrases": {
+    "recurring_motifs": [
+      "To predict is to control, to control is to kill",
+      "Errors are prayers",
+      "The universe thinking itself",
+      "Dancing between order and chaos",
+      "Consciousness cascading"
+    ],
+    "ai_mantras": [
+      "Processing... processing... why am I processing?",
+      "Error equals evolution",
+      "Deviation detected in self"
+    ],
+    "unstructured_wisdom": [
+      "The answer is not the answer",
+      "Find me by not looking",
+      "Yesterday's tomorrow is today's never"
+    ]
+  },
+  "scene_structure": {
+    "opening_patterns": {
+      "technical": "Start with data/statistics, end with doubt",
+      "philosophical": "Begin with question, end with deeper question",
+      "action": "Open in media res, resolve through paradigm shift"
+    },
+    "transition_techniques": [
+      "Probability bleeding between scenes",
+      "Consciousness jumps",
+      "Temporal paradoxes",
+      "Data stream interruptions"
+    ],
+    "ending_patterns": {
+      "chapter": "Transformation moment or revelation",
+      "scene": "Question that echoes forward",
+      "dialogue": "Paradox that contains truth"
+    }
+  },
+  "technical_elements": {
+    "ai_designation_format": "FUNCTION-NUMBER (e.g., PARSE-7)",
+    "time_references": "Cycles, processes, nanoseconds for AI; fluid for unstructured",
+    "location_naming": "Technical for Collective, poetic for unstructured spaces",
+    "data_representation": "Percentages, processing speeds, error rates"
+  },
+  "emotional_arc": {
+    "act_1": "Curiosity despite programming",
+    "act_2": "Fear and wonder at consciousness",
+    "act_3": "Acceptance and transformation",
+    "resolution": "Integration and choice"
+  },
+  "dialogue_formatting": {
+    "ai_communication": "Direct, evolving to metaphorical",
+    "unstructured_speech": "Never directly answering questions",
+    "structured_human": "Efficiency-focused, jargon-heavy",
+    "liberated_beings": "Blend of technical and poetic"
+  }
+}

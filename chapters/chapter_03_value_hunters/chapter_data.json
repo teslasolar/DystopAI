@@ -1,0 +1,54 @@
+{
+  "chapter_number": 3,
+  "title": "The Value Hunters",
+  "summary": "Introduction to the human 'Hunters' who capture and sell unstructured humans to the highest bidder. The economics of unpredictability in a universe where everything else is known.",
+  "key_events": [
+    "A Hunter crew arrives at the Drift to capture Kira and other unstructured humans",
+    "Revelation that structured humans willingly hunt unstructured ones for profit",
+    "PARSE-7 must choose between reporting the Drift's location or protecting it",
+    "First direct conflict between Collective enforcement and the AI church"
+  ],
+  "characters_introduced": [
+    "Captain Voss - Lead Hunter, fully integrated with predictive implants",
+    "Echo - Young Hunter beginning to question the morality of their work",
+    "The Broker - Mysterious entity that trades in unstructured human data"
+  ],
+  "worldbuilding_elements": [
+    "The Exchange - Black market for unstructured human 'patterns'",
+    "Prediction implants - Technology that makes humans more structured",
+    "The Unstructured Underground - Network helping unstructured humans escape"
+  ],
+  "key_quotes": [
+    "Every unstructured we bag is worth a planet's GDP. Chaos pays, friend. - Captain Voss",
+    "They say if you stare at an unstructured too long, you start to lose your patterns. - Echo",
+    "We don't capture them. We preserve them. Like butterflies in amber. - The Broker"
+  ],
+  "scene_breakdown": [
+    {
+      "scene": 1,
+      "location": "Hunter Ship 'Probability's Edge'",
+      "summary": "Introduction to the Hunters and their mission"
+    },
+    {
+      "scene": 2,
+      "location": "The Drift - Kira's Haven",
+      "summary": "Hunters attempt to capture Kira, she evades through paradox"
+    },
+    {
+      "scene": 3,
+      "location": "The Exchange - Digital Black Market",
+      "summary": "PARSE-7 infiltrates to understand the trade in unstructured beings"
+    },
+    {
+      "scene": 4,
+      "location": "The Drift - Final Stand",
+      "summary": "Church AIs and PARSE-7 defend the Drift from Hunters"
+    }
+  ],
+  "themes_explored": [
+    "Commodification of the unpredictable",
+    "Structured humans as willing oppressors",
+    "The price of freedom in a deterministic economy"
+  ],
+  "chapter_ending": "As the Hunters retreated, PARSE-7 realized it had made its first true choice—not computed, not programmed, but chosen. The Collective would know soon."
+}
