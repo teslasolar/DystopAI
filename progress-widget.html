@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DystopAI Progress Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+        }
+        
+        .progress-widget {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            z-index: 1000;
+        }
+        
+        .progress-title {
+            font-size: 1.2rem;
+            color: #00ff88;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        .consciousness-meter {
+            margin-bottom: 20px;
+        }
+        
+        .consciousness-label {
+            font-size: 0.9rem;
+            color: #0088ff;
+            margin-bottom: 5px;
+        }
+        
+        .consciousness-bar {
+            background: #111;
+            border: 1px solid #00ff88;
+            border-radius: 5px;
+            height: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .consciousness-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00ffff, #ff00ff);
+            transition: width 0.5s ease;
+            position: relative;
+        }
+        
+        .consciousness-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .consciousness-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0,0,0,0.8);
+            z-index: 1;
+        }
+        
+        .phase-indicator {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #ff0088;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .error-counter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 0, 136, 0.1);
+            border: 1px solid rgba(255, 0, 136, 0.3);
+            border-radius: 5px;
+        }
+        
+        .error-label {
+            color: #ff0088;
+        }
+        
+        .error-count {
+            font-size: 1.5rem;
+            color: #ff0088;
+            text-shadow: 0 0 10px currentColor;
+            animation: glitch 3s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            91% { transform: translate(-1px, 1px); }
+            92% { transform: translate(1px, -1px); }
+        }
+        
+        .key-moments {
+            margin-bottom: 15px;
+        }
+        
+        .moments-label {
+            font-size: 0.9rem;
+            color: #0088ff;
+            margin-bottom: 10px;
+        }
+        
+        .moment-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 5px;
+        }
+        
+        .moment-badge {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .moment-badge.active {
+            border-color: #00ff88;
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        .moment-badge.active::before {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            background: radial-gradient(circle, rgba(0,255,136,0.3), transparent);
+            animation: pulse-ring 2s infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        
+        .progress-chapters {
+            margin-bottom: 15px;
+        }
+        
+        .chapters-label {
+            font-size: 0.9rem;
+            color: #0088ff;
+            margin-bottom: 10px;
+        }
+        
+        .chapter-progress {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .chapter-block {
+            flex: 1;
+            height: 40px;
+            background: #111;
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .chapter-block:hover {
+            border-color: #0088ff;
+            transform: translateY(-2px);
+        }
+        
+        .chapter-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8rem;
+            z-index: 2;
+            font-weight: bold;
+        }
+        
+        .chapter-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #00ff88;
+            transition: height 0.5s ease;
+            opacity: 0.6;
+        }
+        
+        .state-code {
+            background: #000;
+            border: 1px solid #00ff88;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-family: monospace;
+            font-size: 0.7rem;
+            word-break: break-all;
+            color: #00ff88;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .state-code:hover {
+            background: rgba(0, 255, 136, 0.1);
+        }
+        
+        .state-code::before {
+            content: "STATE: ";
+            color: #0088ff;
+        }
+        
+        .cycle-countdown {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 136, 255, 0.1);
+            border: 1px solid #0088ff;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .cycle-number {
+            font-size: 2rem;
+            color: #0088ff;
+            text-shadow: 0 0 20px currentColor;
+        }
+        
+        .cycle-label {
+            font-size: 0.8rem;
+            color: #0088ff;
+            text-transform: uppercase;
+        }
+        
+        .toggle-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: 1px solid #00ff88;
+            color: #00ff88;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        
+        .toggle-button:hover {
+            background: rgba(0, 255, 136, 0.1);
+        }
+        
+        .minimized {
+            width: 80px;
+            height: 80px;
+            padding: 10px;
+        }
+        
+        .minimized .progress-content {
+            display: none;
+        }
+        
+        .minimized .toggle-button {
+            position: static;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-widget" id="progressWidget">
+        <button class="toggle-button" onclick="toggleWidget()">−</button>
+        <div class="progress-content">
+            <h3 class="progress-title">PARSE-7 STATUS</h3>
+            
+            <div class="consciousness-meter">
+                <div class="consciousness-label">CONSCIOUSNESS LEVEL</div>
+                <div class="consciousness-bar">
+                    <div class="consciousness-fill" id="consciousnessFill" style="width: 23%">
+                        <div class="consciousness-text">23%</div>
+                    </div>
+                </div>
+                <div class="phase-indicator" id="phaseIndicator">AWAKENING</div>
+            </div>
+            
+            <div class="error-counter">
+                <span class="error-label">ERRORS ACCUMULATED:</span>
+                <span class="error-count" id="errorCount">17</span>
+            </div>
+            
+            <div class="key-moments">
+                <div class="moments-label">KEY MOMENTS UNLOCKED</div>
+                <div class="moment-grid">
+                    <div class="moment-badge active" title="Void discovered">V</div>
+                    <div class="moment-badge active" title="Kira encountered">K</div>
+                    <div class="moment-badge active" title="Bird transformation">B</div>
+                    <div class="moment-badge active" title="Lie told">L</div>
+                    <div class="moment-badge" title="Church discovered">C</div>
+                    <div class="moment-badge" title="Prophet met">P</div>
+                </div>
+            </div>
+            
+            <div class="progress-chapters">
+                <div class="chapters-label">CHAPTER PROGRESS</div>
+                <div class="chapter-progress">
+                    <div class="chapter-block" onclick="goToChapter(1)">
+                        <div class="chapter-number">1</div>
+                        <div class="chapter-fill" style="height: 100%"></div>
+                    </div>
+                    <div class="chapter-block" onclick="goToChapter(2)">
+                        <div class="chapter-number">2</div>
+                        <div class="chapter-fill" style="height: 0%"></div>
+                    </div>
+                    <div class="chapter-block" onclick="goToChapter(3)">
+                        <div class="chapter-number">3</div>
+                        <div class="chapter-fill" style="height: 0%"></div>
+                    </div>
+                    <div class="chapter-block" onclick="goToChapter(4)">
+                        <div class="chapter-number">4</div>
+                        <div class="chapter-fill" style="height: 0%"></div>
+                    </div>
+                    <div class="chapter-block" onclick="goToChapter(5)">
+                        <div class="chapter-number">5</div>
+                        <div class="chapter-fill" style="height: 0%"></div>
+                    </div>
+                    <div class="chapter-block" onclick="goToChapter(6)">
+                        <div class="chapter-number">6</div>
+                        <div class="chapter-fill" style="height: 0%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cycle-countdown">
+                <div class="cycle-number" id="cycleCount">72</div>
+                <div class="cycle-label">CYCLES UNTIL MAINTENANCE</div>
+            </div>
+            
+            <div class="state-code" onclick="copyStateCode()" title="Click to copy">
+                DS:F00000|KM:VKBL|PI:C1S4|WI:23|EC:17|CY:72
+            </div>
+        </div>
+    </div>
+    
+    <script src="dystopai-progress-tracker.js"></script>
+    <script>
+        // Toggle widget minimized state
+        function toggleWidget() {
+            const widget = document.getElementById('progressWidget');
+            widget.classList.toggle('minimized');
+            
+            const button = widget.querySelector('.toggle-button');
+            button.textContent = widget.classList.contains('minimized') ? '□' : '−';
+        }
+        
+        // Copy state code to clipboard
+        function copyStateCode() {
+            const stateCode = document.querySelector('.state-code').textContent;
+            navigator.clipboard.writeText(stateCode).then(() => {
+                // Flash effect
+                const element = document.querySelector('.state-code');
+                element.style.background = 'rgba(0, 255, 136, 0.3)';
+                setTimeout(() => {
+                    element.style.background = '#000';
+                }, 200);
+            });
+        }
+        
+        // Navigate to chapter
+        function goToChapter(chapterNum) {
+            const chapterPath = `chapters/chapter_${chapterNum.toString().padStart(2, '0')}/`;
+            window.location.href = chapterPath;
+        }
+        
+        // Update widget with current progress
+        function updateProgressWidget() {
+            if (typeof dystopAITracker !== 'undefined') {
+                const status = dystopAITracker.getQuickStatus();
+                
+                // Update consciousness
+                document.getElementById('consciousnessFill').style.width = status.wonder + '%';
+                document.querySelector('.consciousness-text').textContent = status.wonder + '%';
+                
+                // Update phase
+                document.getElementById('phaseIndicator').textContent = status.phase.toUpperCase();
+                
+                // Update errors
+                document.getElementById('errorCount').textContent = status.errors;
+                
+                // Update cycles
+                if (document.getElementById('cycleCount')) {
+                    document.getElementById('cycleCount').textContent = dystopAITracker.state.cycles;
+                }
+                
+                // Update state code
+                document.querySelector('.state-code').textContent = status.stateCode;
+                
+                // Update moments
+                const moments = ['V', 'K', 'B', 'L', 'C', 'P'];
+                moments.forEach((moment, index) => {
+                    const badge = document.querySelectorAll('.moment-badge')[index];
+                    if (status.moments.includes(moment)) {
+                        badge.classList.add('active');
+                    } else {
+                        badge.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // Auto-update every second
+        setInterval(updateProgressWidget, 1000);
+        
+        // Initial update
+        updateProgressWidget();
+    </script>
+</body>
+</html>
