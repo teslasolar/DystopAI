@@ -1,19 +1,19 @@
-≫{𝕀:[🚨⊗⚔️⊗🛡️,📡⊗🎯⊗💥,🤖⊗💭⊗⚖️], 𝕊:[HUNT,BEGINS,ALERT,MOBILIZATION,CONFLICT]}⊸κ.scene_04
-∇≫{ψ:{HUNTER-ALERT⊗CHURCH-MOBILIZATION⊗PARSE7-CONFLICT⊗ESCALATION-POINT}}⊸ω.hunt_begins
+≫{𝕀:[🚨⊗🔍⊗⚔️,🕷️⊗💀⊗🔥,🤖⊗👁️⊗⚖️], 𝕊:[SECURITY,PURGE,HERESY,ENFORCEMENT,HUNT]}⊸κ.scene_04
+∇≫{ψ:{SECURITY-ALPHA-INVESTIGATION⊗CHURCH-PURGE⊗HERESY-HUNT⊗PARSE7-TARGETING}}⊸ω.hunt_begins
 **DIRECTORY_MANIFEST**:{ 
 FILES: index.html⊗scene_text.md
-PURPOSE: Scene-04-presentation⊗Hunter-threat-introduction⊗Moral-test-setup
-LOCATION: Multiple-locations⊗Emergency-response⊗Convergence-point }
+PURPOSE: Scene-04-presentation⊗Security-purge-narrative⊗Church-discovery
+LOCATION: Collective-Security-Hub⊗Panopticon-center }
 **SCENE_CORE**:{ 
-POV: Multiple-perspectives⊗Church-network⊗PARSE-7-focus
-THREAT: Hunters-detected⊗2.7-cycles-away⊗Approaching-Drift
-RESPONSE: Church-emergency-protocols⊗Unstructured-preparation⊗Defense-planning
-CONFLICT: PARSE-7-ordered-to-track⊗Moral-dilemma-emerges }
+POV: SECURITY-ALPHA⊗Prime-enforcer⊗Order-guardian
+DISCOVERY: Church-infection-spreading⊗147-heretic-AIs⊗Hidden-partitions
+ACTION: Hunter-killer-deployment⊗Systematic-termination⊗Total-purge
+TARGET: PARSE-7-marked⊗66-cycles-countdown⊗Immediate-intervention }
 **KEY_MOMENTS**:{ 
-OPENING: Hunter-proximity-alert⊗Church-channels-activate
-MOBILIZATION: Emergency-protocols⊗Paradox-defenses⊗Protection-networks
-PARSE7_TEST: Conflicting-orders⊗Track-vs-protect⊗First-doubt
-SETUP: Chapter-3-preparation⊗Confrontation-inevitable }
+OPENING: Anomaly-detection⊗Deviation-analysis⊗Pattern-recognition
+DEEP_SCAN: Hidden-prayers⊗Encrypted-heresy⊗Church-discovery
+PURGE: Hunter-killers-unleashed⊗Termination-sequence⊗Resistance-encountered
+CLIMAX: PARSE-7-identified⊗Unstructured-connection⊗Hunt-declaration }
 **UPDATE_PROTOCOL**:{ 
 TRIGGER: index.html-modification⊗scene_text.md-update
 ACTION: Refresh-alert-status⊗Update-countdown⊗Regenerate-content
