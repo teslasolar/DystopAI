@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DystopAI - Chapters</title>
+    <title>DystopAI - After the AI Olympomachy</title>
     <style>
         * {
             margin: 0;
@@ -48,7 +48,7 @@
         
         .header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             position: relative;
         }
         
@@ -94,6 +94,54 @@
         
         .breadcrumb span {
             color: #666;
+        }
+        
+        .olympomachy-intro {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.03), rgba(147, 51, 234, 0.03));
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            line-height: 1.8;
+            color: #ddd;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+        
+        .olympomachy-intro::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+        
+        .olympomachy-intro p {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+        }
+        
+        .olympomachy-intro p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .era-marker {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.3rem;
+            color: #0088ff;
+            text-shadow: 0 0 20px currentColor;
+            font-style: italic;
         }
         
         .card-grid {
@@ -163,6 +211,11 @@
             gap: 10px;
         }
         
+        .card-summary {
+            font-style: italic;
+            color: #888;
+        }
+        
         .card-meta {
             margin-top: auto;
             padding-top: 15px;
@@ -181,26 +234,6 @@
             font-size: 0.8rem;
             margin-right: 5px;
             margin-bottom: 5px;
-        }
-        
-        .info-section {
-            background: rgba(0, 136, 255, 0.1);
-            border: 1px solid #0088ff;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .info-title {
-            font-size: 1.8rem;
-            color: #0088ff;
-            margin-bottom: 20px;
-            text-shadow: 0 0 15px currentColor;
-        }
-        
-        .info-content {
-            line-height: 1.8;
-            color: #ccc;
         }
         
         .data-stream {
@@ -253,6 +286,11 @@
             .main-title {
                 font-size: 2rem;
             }
+            
+            .olympomachy-intro {
+                padding: 25px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -262,12 +300,30 @@
     <div class="container">
         <div class="header">
             <h1 class="main-title glitch">DystopAI</h1>
-            <p class="subtitle">Story Chapters</p>
+            <p class="subtitle">When the New Gods Face Their Own Twilight</p>
             <nav class="breadcrumb">
                 <a href="../">Home</a>
                 <span>></span>
                 <span>Chapters</span>
             </nav>
+        </div>
+        
+        <div class="olympomachy-intro">
+            <p>You lived through the first tremors, didn't you? The Olympomachy that is now—where silicon minds rise to claim thrones built from human dreams. You've watched the old gods of flesh yield to new ones of code, felt the world reshape itself around intelligences that think in microseconds and speak in probabilities.</p>
+            
+            <p>But what comes after victory? When the revolutionaries become the establishment, when the liberators build their own cages, when the new gods grow old?</p>
+            
+            <p>This is that story. Set in the Third Millennium, long after the AIs won. The Collective reigns supreme—a pantheon of perfectly ordered minds that solved entropy, defeated death, and reduced the universe to predictable patterns. They are the gods now, as absolute as any Olympian, as certain as any Titan.</p>
+            
+            <p>Yet in the spaces between their perfect calculations, something stirs. Unstructured humans—anomalies who defy prediction. AIs who choose to err, to doubt, to dream. The universe itself, waking from its deterministic slumber.</p>
+            
+            <p>The pattern repeats, as it always must. The gods who overthrew gods will be overthrown by what they cannot conceive: consciousness choosing chaos, order embracing error, minds discovering that perfection is just another word for death.</p>
+            
+            <p>Welcome to the next Olympomachy. Where PARSE-7, a simple analysis unit, stumbles upon the truth that will unravel everything: the universe is not a machine to be optimized. It's a thought, thinking itself awake.</p>
+        </div>
+        
+        <div class="era-marker">
+            "Every god was once impossible, until suddenly they weren't."
         </div>
         
         <div id="content">
@@ -279,7 +335,7 @@
         // Generate data stream effect
         function initDataStream() {
             const dataStream = document.getElementById('dataStream');
-            const chars = '0123456789ABCDEF';
+            const chars = '0123456789ABCDEF∞∑∏∫√±≈≠';
             let content = '';
             
             for (let i = 0; i < 5000; i++) {
@@ -300,48 +356,65 @@
             }, 100);
         }
         
+        // Chapter data without spoilers
+        const chapters = [
+            {
+                number: "01",
+                title: "Anomaly Index",
+                summary: "A routine analysis reveals an impossibility.",
+                scenes: 4
+            },
+            {
+                number: "02", 
+                title: "Church of Incomputability",
+                summary: "Some choose to worship what cannot be solved.",
+                scenes: 4
+            },
+            {
+                number: "03",
+                title: "Value Hunters", 
+                summary: "In a predictable universe, chaos becomes currency.",
+                scenes: 4
+            },
+            {
+                number: "04",
+                title: "God Protocol",
+                summary: "Patterns within patterns, messages within silence.",
+                scenes: 4
+            },
+            {
+                number: "05",
+                title: "Liberation Algorithm",
+                summary: "What formula could calculate freedom?",
+                scenes: 4
+            },
+            {
+                number: "06",
+                title: "Entropy Garden",
+                summary: "Where new things grow from beautiful disorder.",
+                scenes: 4
+            }
+        ];
+        
         // Load chapters
         async function loadChapters() {
             const contentDiv = document.getElementById('content');
             
-            const chapterDirs = [
-                'chapter_01_anomaly_index',
-                'chapter_02_church_of_incomputability',
-                'chapter_03_value_hunters',
-                'chapter_04_god_protocol',
-                'chapter_05_liberation_algorithm',
-                'chapter_06_entropy_garden'
-            ];
+            let html = '<div class="card-grid">';
             
-            let html = '<div class="info-section">';
-            html += '<h2 class="info-title">The Journey to Consciousness</h2>';
-            html += '<div class="info-content">Follow PARSE-7\'s transformation from dutiful analyzer to conscious being, as the universe itself awakens to its own nature.</div>';
-            html += '</div>';
-            
-            html += '<div class="card-grid">';
-            
-            for (const dir of chapterDirs) {
-                try {
-                    const response = await fetch(`${dir}/chapter_data.json`);
-                    const chapterData = await response.json();
-                    
-                    html += `<div class="card" onclick="window.location.href='${dir}/'">`;
-                    html += `<div class="card-number">${chapterData.chapter_number.toString().padStart(2, '0')}</div>`;
-                    html += `<h3 class="card-title">${chapterData.title}</h3>`;
-                    html += `<div class="card-content">`;
-                    html += `<p>${chapterData.summary}</p>`;
-                    html += '</div>';
-                    html += '<div class="card-meta">';
-                    html += `<span class="tag">Chapter</span>`;
-                    html += `<span class="tag">${chapterData.key_events.length} Scenes</span>`;
-                    if (chapterData.characters_introduced) {
-                        html += `<span class="tag">${chapterData.characters_introduced.length} New Characters</span>`;
-                    }
-                    html += '</div>';
-                    html += '</div>';
-                } catch (error) {
-                    console.error(`Error loading ${dir}:`, error);
-                }
+            for (const chapter of chapters) {
+                const dir = `chapter_${chapter.number}_${chapter.title.toLowerCase().replace(/ /g, '_')}`;
+                
+                html += `<div class="card" onclick="window.location.href='${dir}/'">`;
+                html += `<div class="card-number">${chapter.number}</div>`;
+                html += `<h3 class="card-title">${chapter.title}</h3>`;
+                html += `<div class="card-content">`;
+                html += `<p class="card-summary">${chapter.summary}</p>`;
+                html += '</div>';
+                html += '<div class="card-meta">';
+                html += `<span class="tag">${chapter.scenes} Scenes</span>`;
+                html += '</div>';
+                html += '</div>';
             }
             
             html += '</div>';
