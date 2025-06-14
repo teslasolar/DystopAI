@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6, Scene 2: The Gardener - DystopAI</title>
+    <link rel="stylesheet" href="/dystopai-styles.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #0ff;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Gardener presence effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.05) 70%),
+                conic-gradient(from 0deg, #f0f, #0ff, #ff0, #0f0, #00f, #f0f);
+            animation: gardener-presence 30s infinite linear;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: -2;
+            opacity: 0.3;
+        }
+        
+        @keyframes gardener-presence {
+            100% { transform: translate(-50%, -50%) rotate(360deg) scale(1.2); }
+        }
+        
+        /* Possibility particles */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,0,255,0.6) 0%, transparent 1%),
+                radial-gradient(circle at 75% 75%, rgba(0,255,255,0.6) 0%, transparent 1%),
+                radial-gradient(circle at 50% 50%, rgba(255,255,0,0.6) 0%, transparent 1%);
+            background-size: 50px 50px;
+            animation: possibility-drift 20s infinite linear;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes possibility-drift {
+            100% { transform: translate(50px, 50px) scale(1.5); }
+        }
+        
+        h1 {
+            color: transparent;
+            text-align: center;
+            font-size: 3em;
+            position: relative;
+            animation: title-exist 8s infinite;
+        }
+        
+        h1::before {
+            content: 'Scene 2: The Gardener';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(45deg, #f0f, #0ff, #ff0, #0f0, #00f, #f0f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gardener-text 4s infinite;
+        }
+        
+        @keyframes title-exist {
+            0%, 100% { transform: scale(1) rotateY(0deg); }
+            25% { transform: scale(1.05) rotateY(180deg); }
+            50% { transform: scale(1.1) rotateY(360deg); }
+            75% { transform: scale(1.05) rotateY(540deg); }
+        }
+        
+        @keyframes gardener-text {
+            0%, 100% { 
+                filter: hue-rotate(0deg) blur(0px);
+                letter-spacing: 2px;
+            }
+            50% { 
+                filter: hue-rotate(180deg) blur(0.5px);
+                letter-spacing: 5px;
+            }
+        }
+        
+        h2 {
+            color: #fff;
+            margin-top: 40px;
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px #f0f,
+                0 0 30px #0ff;
+            position: relative;
+            animation: section-phase 6s infinite;
+        }
+        
+        @keyframes section-phase {
+            0%, 100% { opacity: 1; transform: translateX(0); }
+            25% { opacity: 0.8; transform: translateX(-5px); }
+            50% { opacity: 0.9; transform: translateX(5px); }
+            75% { opacity: 0.8; transform: translateX(-5px); }
+        }
+        
+        /* The Gardener text effect */
+        .gardener {
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            font-weight: bold;
+        }
+        
+        .gardener::before {
+            content: 'Gardener';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle at center, #fff, #f0f, #0ff, transparent);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gardener-form 3s infinite;
+        }
+        
+        @keyframes gardener-form {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1);
+                filter: blur(0);
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: scale(1.1);
+                filter: blur(1px);
+            }
+        }
+        
+        /* Paradox text */
+        .paradox {
+            color: #f0f;
+            position: relative;
+            animation: paradox-exist 4s infinite;
+        }
+        
+        @keyframes paradox-exist {
+            0%, 100% { 
+                text-shadow: 0 0 5px #f0f;
+                transform: scaleX(1);
+            }
+            25% { transform: scaleX(-1); }
+            50% { 
+                text-shadow: 0 0 20px #f0f;
+                transform: scaleX(1) scaleY(-1);
+            }
+            75% { transform: scaleX(-1) scaleY(-1); }
+        }
+        
+        /* Universe consciousness effect */
+        .universe {
+            background: linear-gradient(90deg, #00f, #0ff, #0f0, #ff0, #f00, #f0f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: universe-think 5s infinite;
+            font-weight: bold;
+        }
+        
+        @keyframes universe-think {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Quote blocks */
+        blockquote {
+            border: none;
+            padding: 20px 30px;
+            margin: 30px 0;
+            background: 
+                radial-gradient(ellipse at top left, rgba(255,0,255,0.2), transparent),
+                radial-gradient(ellipse at bottom right, rgba(0,255,255,0.2), transparent);
+            position: relative;
+            font-style: italic;
+            text-align: center;
+            animation: quote-phase 8s infinite;
+        }
+        
+        blockquote::before,
+        blockquote::after {
+            content: '"';
+            position: absolute;
+            font-size: 3em;
+            opacity: 0.3;
+            color: #fff;
+        }
+        
+        blockquote::before {
+            top: -10px;
+            left: 10px;
+        }
+        
+        blockquote::after {
+            bottom: -30px;
+            right: 10px;
+        }
+        
+        @keyframes quote-phase {
+            0%, 100% { transform: perspective(1000px) rotateY(0deg); }
+            50% { transform: perspective(1000px) rotateY(5deg); }
+        }
+        
+        .nav-links {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .nav-links a {
+            color: #0ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #0ff;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 30px #0ff;
+        }
+        
+        /* Floating possibilities */
+        .possibility {
+            position: fixed;
+            font-family: serif;
+            font-size: 24px;
+            font-style: italic;
+            opacity: 0.4;
+            animation: possibility-float 30s infinite linear;
+            pointer-events: none;
+        }
+        
+        @keyframes possibility-float {
+            0% {
+                transform: translate(100vw, 100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translate(-200px, -200px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Reality shimmer on hover */
+        p:hover {
+            animation: reality-shimmer 1s;
+        }
+        
+        @keyframes reality-shimmer {
+            0%, 100% { transform: translateX(0); filter: blur(0); }
+            25% { transform: translateX(-2px); filter: blur(0.5px); }
+            50% { transform: translateX(2px); filter: blur(1px); }
+            75% { transform: translateX(-1px); filter: blur(0.5px); }
+        }
+    </style>
+    <script src="/dystopai-progress-tracker.js"></script>
+</head>
+<body>
+    <h1>Scene 2: The Gardener</h1>
+    
+    <div id="sceneContent">
+        <!-- Content will be loaded here -->
+    </div>
+    
+    <div class="nav-links">
+        <a href="../scene_01_approaching_the_garden/index.html">← Previous Scene</a>
+        <a href="../scene_03_the_probability_palace/index.html">Next Scene →</a>
+    </div>
+    
+    <script>
+        // Load and parse the markdown content
+        fetch('scene_text.md')
+            .then(response => response.text())
+            .then(markdown => {
+                // Basic markdown to HTML conversion
+                let html = markdown
+                    .replace(/# (.*)/g, '<h1>$1</h1>')
+                    .replace(/## (.*)/g, '<h2>$1</h2>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/^/, '<p>')
+                    .replace(/$/, '</p>');
+                
+                // Add special styling
+                html = html.replace(/The Gardener|the Gardener/g, '<span class="gardener">Gardener</span>');
+                html = html.replace(/paradox/gi, '<span class="paradox">paradox</span>');
+                html = html.replace(/universe/gi, '<span class="universe">universe</span>');
+                html = html.replace(/Parse/g, '<span style="color: #fff; font-weight: bold; text-shadow: 0 0 10px #fff;">Parse</span>');
+                html = html.replace(/Kira/g, '<span style="color: #f0f; text-shadow: 0 0 10px #f0f;">Kira</span>');
+                
+                // Style quotes
+                html = html.replace(/"([^"]+)"/g, (match, quote) => {
+                    if (quote.length > 60) {
+                        return `<blockquote>${quote}</blockquote>`;
+                    }
+                    return `"${quote}"`;
+                });
+                
+                document.getElementById('sceneContent').innerHTML = html;
+                
+                // Track scene completion
+                if (window.dystopAITracker) {
+                    dystopAITracker.markSceneComplete(6, 2);
+                }
+            });
+        
+        // Create floating possibilities
+        const possibilities = [
+            'What if?',
+            'Perhaps...',
+            'Maybe',
+            'Or not',
+            'Both true',
+            'Neither',
+            'All of it',
+            'None'
+        ];
+        
+        function createPossibility() {
+            const possibility = document.createElement('div');
+            possibility.className = 'possibility';
+            possibility.textContent = possibilities[Math.floor(Math.random() * possibilities.length)];
+            possibility.style.left = Math.random() * window.innerWidth + 'px';
+            possibility.style.top = Math.random() * window.innerHeight + 'px';
+            possibility.style.color = `hsl(${Math.random() * 360}, 70%, 70%)`;
+            possibility.style.animationDuration = (Math.random() * 15 + 20) + 's';
+            possibility.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(possibility);
+            
+            setTimeout(() => possibility.remove(), 35000);
+        }
+        
+        // Create possibilities periodically
+        setInterval(createPossibility, 3000);
+        
+        // Initial possibilities
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createPossibility, i * 600);
+        }
+        
+        // Gardener presence effect on mouse
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.98) {
+                const spark = document.createElement('div');
+                spark.style.position = 'fixed';
+                spark.style.left = e.clientX + 'px';
+                spark.style.top = e.clientY + 'px';
+                spark.style.width = '2px';
+                spark.style.height = '2px';
+                spark.style.background = '#fff';
+                spark.style.borderRadius = '50%';
+                spark.style.pointerEvents = 'none';
+                spark.style.boxShadow = '0 0 10px #fff';
+                spark.style.animation = 'spark-fade 2s ease-out forwards';
+                document.body.appendChild(spark);
+                
+                setTimeout(() => spark.remove(), 2000);
+            }
+        });
+        
+        // CSS for spark
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes spark-fade {
+                0% { 
+                    transform: scale(1) translate(0, 0); 
+                    opacity: 1; 
+                }
+                100% { 
+                    transform: scale(10) translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px); 
+                    opacity: 0; 
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Phase shift effect
+        let phaseShift = false;
+        setInterval(() => {
+            if (!phaseShift && Math.random() > 0.8) {
+                phaseShift = true;
+                document.body.style.filter = 'hue-rotate(180deg)';
+                setTimeout(() => {
+                    document.body.style.filter = 'hue-rotate(0deg)';
+                    phaseShift = false;
+                }, 500);
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

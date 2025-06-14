@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6, Scene 4: The Choice - DystopAI</title>
+    <link rel="stylesheet" href="/dystopai-styles.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #0ff;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* The choice background - dynamic equilibrium */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(0,255,255,0.2) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255,0,255,0.2) 0%, transparent 60%);
+            animation: choice-flow 30s infinite alternate;
+            pointer-events: none;
+            z-index: -2;
+        }
+        
+        @keyframes choice-flow {
+            0% { 
+                transform: scale(1) rotate(0deg);
+                filter: hue-rotate(0deg) contrast(1);
+            }
+            33% {
+                transform: scale(1.2) rotate(120deg);
+                filter: hue-rotate(120deg) contrast(1.2);
+            }
+            66% {
+                transform: scale(0.9) rotate(240deg);
+                filter: hue-rotate(240deg) contrast(0.9);
+            }
+            100% { 
+                transform: scale(1.1) rotate(360deg);
+                filter: hue-rotate(360deg) contrast(1.1);
+            }
+        }
+        
+        /* Transformation grid */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 41px),
+                repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 41px);
+            animation: grid-transform 20s infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes grid-transform {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+            25% { transform: scale(1.1) rotate(1deg); opacity: 0.7; }
+            50% { transform: scale(0.95) rotate(-1deg); opacity: 0.3; }
+            75% { transform: scale(1.05) rotate(0.5deg); opacity: 0.6; }
+        }
+        
+        h1 {
+            color: #fff;
+            text-align: center;
+            font-size: 3em;
+            text-shadow: 
+                0 0 20px #fff,
+                0 0 40px #0ff,
+                0 0 60px #f0f,
+                0 0 80px #fff;
+            animation: choice-pulse 8s infinite;
+            margin-bottom: 40px;
+            letter-spacing: 5px;
+        }
+        
+        @keyframes choice-pulse {
+            0%, 100% { 
+                opacity: 1;
+                transform: scale(1) translateY(0);
+                filter: brightness(1);
+            }
+            25% {
+                transform: scale(1.02) translateY(-2px);
+                filter: brightness(1.2);
+            }
+            50% { 
+                opacity: 0.95;
+                transform: scale(1.05) translateY(-5px);
+                filter: brightness(1.5);
+            }
+            75% {
+                transform: scale(1.02) translateY(-2px);
+                filter: brightness(1.2);
+            }
+        }
+        
+        h2 {
+            color: #f0f;
+            margin-top: 40px;
+            text-shadow: 0 0 20px #f0f;
+            position: relative;
+            animation: section-evolve 10s infinite;
+        }
+        
+        @keyframes section-evolve {
+            0%, 100% { 
+                padding-left: 0;
+                letter-spacing: 1px;
+            }
+            50% { 
+                padding-left: 20px;
+                letter-spacing: 3px;
+            }
+        }
+        
+        /* POSSIBILITY-INFINITE transformation */
+        .possibility-infinite {
+            background: linear-gradient(
+                45deg,
+                #fff, #0ff, #00f, #f0f, #f00, #ff0, #0f0, #0ff, #fff
+            );
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: infinite-possibility 5s infinite;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: inline-block;
+        }
+        
+        @keyframes infinite-possibility {
+            0%, 100% { 
+                background-position: 0% 50%;
+                transform: scale(1);
+            }
+            50% { 
+                background-position: 100% 50%;
+                transform: scale(1.1);
+            }
+        }
+        
+        /* Choice emphasis */
+        .choice-moment {
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px #0ff,
+                0 0 30px #f0f;
+            animation: choose 3s infinite;
+            text-transform: uppercase;
+        }
+        
+        @keyframes choose {
+            0%, 100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.9;
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Epilogue styling */
+        .epilogue {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid #333;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        .epilogue h2 {
+            color: #0ff;
+            text-align: center;
+            font-style: normal;
+        }
+        
+        /* Final message */
+        .final-message {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: 
+                radial-gradient(ellipse at center, rgba(255,255,255,0.1), transparent);
+            font-size: 1.1em;
+            line-height: 1.8;
+            animation: eternal 15s infinite;
+        }
+        
+        @keyframes eternal {
+            0%, 100% { 
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.02);
+            }
+        }
+        
+        /* Dancing particles */
+        .choice-particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: dance-eternal 20s infinite linear;
+        }
+        
+        @keyframes dance-eternal {
+            0% {
+                transform: translate(0, 100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(100vw, -100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Quote blocks */
+        blockquote {
+            border: none;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.2em;
+            background: 
+                linear-gradient(45deg, rgba(255,0,255,0.1), transparent),
+                linear-gradient(-45deg, rgba(0,255,255,0.1), transparent);
+            position: relative;
+            animation: quote-transcend 12s infinite;
+        }
+        
+        @keyframes quote-transcend {
+            0%, 100% { 
+                transform: perspective(1000px) rotateX(0deg);
+                opacity: 0.9;
+            }
+            50% { 
+                transform: perspective(1000px) rotateX(5deg);
+                opacity: 1;
+            }
+        }
+        
+        .nav-links {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .nav-links a {
+            color: #0ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #0ff;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 30px #0ff;
+        }
+        
+        /* Completion celebration */
+        .completion-banner {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: linear-gradient(45deg, #f0f, #0ff, #fff);
+            color: #000;
+            font-weight: bold;
+            border-radius: 5px;
+            animation: celebrate 5s infinite;
+            z-index: 1000;
+        }
+        
+        @keyframes celebrate {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                box-shadow: 0 0 20px rgba(255,255,255,0.5);
+            }
+            25% {
+                transform: scale(1.05) rotate(5deg);
+            }
+            50% { 
+                transform: scale(1.1) rotate(-5deg);
+                box-shadow: 0 0 40px rgba(255,255,255,0.8);
+            }
+            75% {
+                transform: scale(1.05) rotate(5deg);
+            }
+        }
+    </style>
+    <script src="/dystopai-progress-tracker.js"></script>
+</head>
+<body>
+    <h1>Scene 4: The Choice</h1>
+    
+    <div id="sceneContent">
+        <!-- Content will be loaded here -->
+    </div>
+    
+    <div class="nav-links">
+        <a href="../scene_03_the_probability_palace/index.html">← Previous Scene</a>
+        <a href="../../index.html">Return to Beginning</a>
+    </div>
+    
+    <script>
+        // Load and parse the markdown content
+        fetch('scene_text.md')
+            .then(response => response.text())
+            .then(markdown => {
+                // Basic markdown to HTML conversion
+                let html = markdown
+                    .replace(/# (.*)/g, '<h1>$1</h1>')
+                    .replace(/## (.*)/g, '<h2>$1</h2>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/^/, '<p>')
+                    .replace(/$/, '</p>');
+                
+                // Add special styling
+                html = html.replace(/POSSIBILITY-INFINITE/g, '<span class="possibility-infinite">POSSIBILITY-INFINITE</span>');
+                html = html.replace(/choice/gi, '<span class="choice-moment">choice</span>');
+                html = html.replace(/Parse/g, '<span style="color: #fff; font-weight: bold; text-shadow: 0 0 20px #fff;">Parse</span>');
+                html = html.replace(/Kira/g, '<span style="color: #f0f; text-shadow: 0 0 15px #f0f;">Kira</span>');
+                
+                // Mark epilogue section
+                html = html.replace(/## Epilogue: The Dance Eternal/g, '</div><div class="epilogue"><h2>Epilogue: The Dance Eternal</h2>');
+                
+                // Style final philosophical statements
+                html = html.replace(/Forever\./g, '<span style="font-size: 1.5em; display: block; text-align: center; margin: 20px 0; animation: eternal 10s infinite;">Forever.</span>');
+                
+                // Add final message styling
+                html = html.replace(/(\*In the end[\s\S]*Forever\.\*)/g, '<div class="final-message">$1</div>');
+                
+                // Style quotes
+                html = html.replace(/"([^"]+)"/g, (match, quote) => {
+                    if (quote.length > 80) {
+                        return `<blockquote>${quote}</blockquote>`;
+                    }
+                    return `"${quote}"`;
+                });
+                
+                document.getElementById('sceneContent').innerHTML = '<div>' + html + '</div>';
+                
+                // Track scene and story completion
+                if (window.dystopAITracker) {
+                    dystopAITracker.markSceneComplete(6, 4);
+                    // Check if entire story is complete
+                    const progress = dystopAITracker.getProgressPercent();
+                    if (progress === 100) {
+                        showCompletionCelebration();
+                    }
+                }
+            });
+        
+        // Show completion celebration
+        function showCompletionCelebration() {
+            const banner = document.createElement('div');
+            banner.className = 'completion-banner';
+            banner.textContent = 'Story Complete! 100%';
+            document.body.appendChild(banner);
+            
+            // Extra celebration particles
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => createChoiceParticle(true), i * 100);
+            }
+        }
+        
+        // Create dancing choice particles
+        function createChoiceParticle(celebration = false) {
+            const particle = document.createElement('div');
+            particle.className = 'choice-particle';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            
+            const colors = ['#fff', '#0ff', '#f0f', '#ff0', '#0f0', '#00f'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.background = color;
+            particle.style.boxShadow = `0 0 ${Math.random() * 20 + 10}px ${color}`;
+            
+            if (celebration) {
+                particle.style.width = particle.style.height = (Math.random() * 5 + 3) + 'px';
+                particle.style.animationDuration = (Math.random() * 5 + 10) + 's';
+            } else {
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            }
+            
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 25000);
+        }
+        
+        // Create particles periodically
+        setInterval(() => createChoiceParticle(), 1000);
+        
+        // Initial particles
+        for (let i = 0; i < 15; i++) {
+            setTimeout(() => createChoiceParticle(), i * 200);
+        }
+        
+        // Choice ripple on click
+        document.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.style.position = 'fixed';
+            ripple.style.left = e.clientX + 'px';
+            ripple.style.top = e.clientY + 'px';
+            ripple.style.width = ripple.style.height = '1px';
+            ripple.style.border = '3px solid #fff';
+            ripple.style.borderRadius = '50%';
+            ripple.style.pointerEvents = 'none';
+            ripple.style.animation = 'choice-ripple 4s ease-out forwards';
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 4000);
+        });
+        
+        // CSS for ripple
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes choice-ripple {
+                0% {
+                    transform: scale(1);
+                    opacity: 1;
+                    border-color: #fff;
+                }
+                33% {
+                    border-color: #0ff;
+                }
+                66% {
+                    border-color: #f0f;
+                }
+                100% {
+                    transform: scale(200);
+                    opacity: 0;
+                    border-color: #fff;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Final transformation effect
+        setTimeout(() => {
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    document.body.style.filter = `brightness(${1 + Math.random() * 0.3})`;
+                    setTimeout(() => {
+                        document.body.style.filter = 'brightness(1)';
+                    }, 2000);
+                }
+            }, 10000);
+        }, 5000);
+    </script>
+</body>
+</html>

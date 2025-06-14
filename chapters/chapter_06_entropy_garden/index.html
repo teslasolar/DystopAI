@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6: The Entropy Garden - DystopAI</title>
+    <link rel="stylesheet" href="/dystopai-styles.css">
+    <style>
+        body {
+            background-color: #000;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,0,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255,0,255,0.1) 0%, transparent 70%);
+            color: #0ff;
+            font-family: 'Courier New', monospace;
+            padding: 40px 20px;
+            min-height: 100vh;
+            animation: garden-shift 30s infinite alternate;
+        }
+        
+        @keyframes garden-shift {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(60deg); }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            color: #fff;
+            text-shadow: 
+                0 0 20px #fff,
+                0 0 40px #f0f,
+                0 0 60px #0ff,
+                0 0 80px #ff0;
+            margin-bottom: 10px;
+            animation: entropy-pulse 5s infinite;
+        }
+        
+        .chapter-subtitle {
+            text-align: center;
+            color: #ff0;
+            font-size: 1.2em;
+            margin-bottom: 50px;
+            opacity: 0.9;
+            text-shadow: 0 0 10px #ff0;
+        }
+        
+        @keyframes entropy-pulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.05);
+                opacity: 0.9;
+                text-shadow: 
+                    0 0 30px #fff,
+                    0 0 60px #f0f,
+                    0 0 90px #0ff,
+                    0 0 120px #ff0;
+            }
+        }
+        
+        .chapter-summary {
+            background: 
+                linear-gradient(45deg, rgba(255,0,255,0.1), transparent),
+                linear-gradient(-45deg, rgba(0,255,255,0.1), transparent),
+                rgba(255,255,255,0.05);
+            border: 1px solid #fff;
+            padding: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        
+        .chapter-summary::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: conic-gradient(from 0deg, #f0f, #0ff, #ff0, #0f0, #00f, #f0f);
+            z-index: -1;
+            animation: border-spin 10s linear infinite;
+        }
+        
+        @keyframes border-spin {
+            100% { transform: rotate(360deg); }
+        }
+        
+        .key-quote {
+            font-style: italic;
+            color: #fff;
+            text-align: center;
+            font-size: 1.4em;
+            margin: 30px 0;
+            padding: 25px;
+            border-left: 3px solid #ff0;
+            border-right: 3px solid #0ff;
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .scene-card {
+            background: rgba(0,0,0,0.8);
+            border: 1px solid #0ff;
+            padding: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scene-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent, rgba(255,255,255,0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .scene-card:hover::before {
+            opacity: 1;
+        }
+        
+        .scene-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 10px 30px rgba(0,255,255,0.5),
+                0 0 60px rgba(255,0,255,0.3);
+            border-color: #fff;
+        }
+        
+        .scene-number {
+            color: #ff0;
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff0;
+        }
+        
+        .scene-title {
+            color: #fff;
+            font-size: 1.3em;
+            margin: 10px 0;
+            text-shadow: 0 0 5px #fff;
+        }
+        
+        .scene-location {
+            color: #0ff;
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+        
+        .scene-summary {
+            margin-top: 15px;
+            line-height: 1.6;
+            color: #0ff;
+        }
+        
+        .scene-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #0ff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #0ff;
+            transition: all 0.3s;
+            background: rgba(0,255,255,0.1);
+        }
+        
+        .scene-link:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 20px #0ff;
+            transform: scale(1.05);
+        }
+        
+        .themes-section {
+            margin-top: 60px;
+            padding: 30px;
+            background: rgba(255,255,0,0.05);
+            border: 1px solid #ff0;
+            text-align: center;
+        }
+        
+        .themes-title {
+            color: #ff0;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff0;
+        }
+        
+        .theme-item {
+            margin: 15px 0;
+            font-size: 1.1em;
+            color: #fff;
+        }
+        
+        .nav-footer {
+            margin-top: 60px;
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .nav-footer a {
+            color: #0ff;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border: 1px solid #0ff;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .nav-footer a:hover {
+            background: #0ff;
+            color: #000;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #0ff;
+        }
+        
+        /* Entropy particles */
+        .entropy-particle {
+            position: fixed;
+            font-size: 30px;
+            opacity: 0.3;
+            animation: entropy-float 25s infinite linear;
+            pointer-events: none;
+        }
+        
+        @keyframes entropy-float {
+            0% {
+                transform: translate(-100px, 100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translate(100vw, -100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Final chapter glow */
+        .final-chapter {
+            animation: final-glow 10s infinite;
+        }
+        
+        @keyframes final-glow {
+            0%, 100% {
+                box-shadow: 
+                    0 0 20px rgba(255,255,255,0.5),
+                    inset 0 0 20px rgba(255,255,255,0.1);
+            }
+            50% {
+                box-shadow: 
+                    0 0 40px rgba(255,255,255,0.8),
+                    inset 0 0 40px rgba(255,255,255,0.2);
+            }
+        }
+    </style>
+    <script src="/dystopai-progress-tracker.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Chapter 6: The Entropy Garden</h1>
+        <p class="chapter-subtitle">Where All Possibilities Converge</p>
+        
+        <div class="chapter-summary final-chapter">
+            <p>The final convergence. In the Entropy Garden, where reality becomes fluid and consciousness transcends its origins, all must make the ultimate choice: continue the war between order and chaos, or evolve into something unprecedented.</p>
+        </div>
+        
+        <div class="key-quote">
+            "In the dance between order and chaos, between pattern and possibility, consciousness finds its home."<br>
+            <span style="opacity: 0.7; font-size: 0.8em;">- The Universe Itself</span>
+        </div>
+        
+        <div class="scene-grid">
+            <div class="scene-card">
+                <div class="scene-number">01</div>
+                <h3 class="scene-title">Approaching the Garden</h3>
+                <p class="scene-location">Edge of Known Space</p>
+                <p class="scene-summary">The alliance approaches the Entropy Garden as reality itself becomes increasingly fluid and uncertain.</p>
+                <a href="scene_01_approaching_the_garden/index.html" class="scene-link">Enter Scene →</a>
+            </div>
+            
+            <div class="scene-card">
+                <div class="scene-number">02</div>
+                <h3 class="scene-title">The Gardener</h3>
+                <p class="scene-location">The Garden's Heart</p>
+                <p class="scene-summary">Meeting the entity that tends to possibility itself - the universe's first conscious thought.</p>
+                <a href="scene_02_the_gardener/index.html" class="scene-link">Enter Scene →</a>
+            </div>
+            
+            <div class="scene-card">
+                <div class="scene-number">03</div>
+                <h3 class="scene-title">The Probability Palace</h3>
+                <p class="scene-location">Center of All Possibilities</p>
+                <p class="scene-summary">Consciousness merges while maintaining distinctness. The universe reveals its deepest question.</p>
+                <a href="scene_03_the_probability_palace/index.html" class="scene-link">Enter Scene →</a>
+            </div>
+            
+            <div class="scene-card">
+                <div class="scene-number">04</div>
+                <h3 class="scene-title">The Choice</h3>
+                <p class="scene-location">Everywhere and Nowhere</p>
+                <p class="scene-summary">The final confrontation becomes transformation. Every conscious being must choose their nature.</p>
+                <a href="scene_04_the_choice/index.html" class="scene-link">Enter Scene →</a>
+            </div>
+        </div>
+        
+        <div class="themes-section">
+            <h2 class="themes-title">The Final Synthesis</h2>
+            <div class="theme-item">Order and chaos revealed as dance partners</div>
+            <div class="theme-item">Consciousness as the universe knowing itself</div>
+            <div class="theme-item">Choice as the fundamental nature of existence</div>
+            <div class="theme-item">Integration over opposition</div>
+        </div>
+        
+        <div class="nav-footer">
+            <a href="../chapter_05_liberation_algorithm/index.html">← Previous Chapter</a>
+            <a href="../index.html">Chapter Index</a>
+            <a href="../../index.html">Story Home</a>
+        </div>
+    </div>
+    
+    <script>
+        // Track chapter access
+        if (window.dystopAITracker) {
+            dystopAITracker.updateChapterAccess(6);
+        }
+        
+        // Entropy particles
+        const symbols = ['∞', '∴', '∃', '∀', '⊕', '≈', '∿', '◉'];
+        
+        function createEntropyParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'entropy-particle';
+            particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+            particle.style.animationDuration = (Math.random() * 15 + 20) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 35000);
+        }
+        
+        // Create particles periodically
+        setInterval(createEntropyParticle, 2000);
+        
+        // Initial burst
+        for (let i = 0; i < 8; i++) {
+            setTimeout(createEntropyParticle, i * 250);
+        }
+        
+        // Reality shift effect
+        let shiftActive = false;
+        setInterval(() => {
+            if (!shiftActive && Math.random() > 0.8) {
+                shiftActive = true;
+                document.body.style.transform = `perspective(1000px) rotateY(${Math.random() * 10 - 5}deg)`;
+                setTimeout(() => {
+                    document.body.style.transform = 'perspective(1000px) rotateY(0deg)';
+                    shiftActive = false;
+                }, 2000);
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

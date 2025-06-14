@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6, Scene 1: Approaching the Garden - DystopAI</title>
+    <link rel="stylesheet" href="/dystopai-styles.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #0ff;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Reality breakdown effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255,0,255,0.2) 0%, transparent 40%),
+                radial-gradient(circle at 70% 70%, rgba(0,255,255,0.2) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255,255,0,0.1) 0%, transparent 60%);
+            animation: reality-warp 20s infinite alternate;
+            pointer-events: none;
+            z-index: -2;
+        }
+        
+        @keyframes reality-warp {
+            0% { 
+                transform: scale(1) rotate(0deg); 
+                filter: hue-rotate(0deg) blur(0px);
+            }
+            50% {
+                transform: scale(1.5) rotate(180deg);
+                filter: hue-rotate(180deg) blur(1px);
+            }
+            100% { 
+                transform: scale(0.8) rotate(360deg); 
+                filter: hue-rotate(360deg) blur(2px);
+            }
+        }
+        
+        /* Entropy particles */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255,255,255,0.4) 0%, transparent 2%),
+                radial-gradient(circle at 80% 80%, rgba(255,0,255,0.4) 0%, transparent 2%),
+                radial-gradient(circle at 20% 90%, rgba(0,255,255,0.4) 0%, transparent 2%);
+            background-size: 200px 200px;
+            animation: entropy-flow 15s infinite linear;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes entropy-flow {
+            100% { transform: translate(-200px, -200px) rotate(360deg); }
+        }
+        
+        h1 {
+            color: #fff;
+            text-shadow: 
+                0 0 20px #f0f,
+                0 0 40px #0ff,
+                0 0 60px #ff0;
+            animation: garden-pulse 6s infinite;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        
+        @keyframes garden-pulse {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1) translateY(0);
+                filter: hue-rotate(0deg);
+            }
+            25% {
+                transform: scale(1.02) translateY(-2px);
+                filter: hue-rotate(90deg);
+            }
+            50% { 
+                opacity: 0.9; 
+                transform: scale(1.05) translateY(-5px);
+                filter: hue-rotate(180deg);
+            }
+            75% {
+                transform: scale(1.02) translateY(-2px);
+                filter: hue-rotate(270deg);
+            }
+        }
+        
+        h2 {
+            color: #f0f;
+            margin-top: 40px;
+            text-shadow: 0 0 15px #f0f;
+            position: relative;
+            animation: section-drift 8s infinite ease-in-out;
+        }
+        
+        @keyframes section-drift {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+        
+        /* Character names with reality effects */
+        .parse {
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 0 0 10px #fff;
+            animation: consciousness-flicker 3s infinite;
+        }
+        
+        .kira {
+            background: linear-gradient(45deg, #f0f, #0ff, #ff0, #f0f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: kira-shift 4s infinite;
+        }
+        
+        @keyframes kira-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .absolute-zero {
+            color: #fff;
+            background: #000;
+            padding: 2px 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            animation: order-glitch 2s infinite;
+        }
+        
+        @keyframes order-glitch {
+            0%, 100% { transform: translateX(0); }
+            92% { transform: translateX(0); }
+            93% { transform: translateX(-2px); }
+            94% { transform: translateX(2px); }
+            95% { transform: translateX(0); }
+        }
+        
+        /* Garden text effect */
+        .garden-text {
+            color: transparent;
+            background: radial-gradient(circle at center, #ff0, #0ff, #f0f, #fff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: garden-colors 5s infinite;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        @keyframes garden-colors {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+        }
+        
+        /* Reality distortion quotes */
+        blockquote {
+            border: none;
+            padding: 20px;
+            margin: 20px 0;
+            background: 
+                linear-gradient(45deg, rgba(255,0,255,0.1), transparent),
+                linear-gradient(-45deg, rgba(0,255,255,0.1), transparent);
+            position: relative;
+            font-style: italic;
+            animation: quote-reality 10s infinite;
+        }
+        
+        @keyframes quote-reality {
+            0%, 100% { transform: skew(0deg, 0deg); }
+            25% { transform: skew(1deg, 0deg); }
+            50% { transform: skew(-1deg, 1deg); }
+            75% { transform: skew(0deg, -1deg); }
+        }
+        
+        .nav-links {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .nav-links a {
+            color: #0ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #0ff;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 30px #0ff;
+            transform: scale(1.05);
+        }
+        
+        /* Floating reality fragments */
+        .reality-fragment {
+            position: fixed;
+            font-size: 20px;
+            opacity: 0.5;
+            animation: fragment-float 20s infinite linear;
+            pointer-events: none;
+            filter: blur(0.5px);
+        }
+        
+        @keyframes fragment-float {
+            0% {
+                transform: translate(100vw, 100vh) rotate(0deg);
+            }
+            100% {
+                transform: translate(-100px, -100px) rotate(720deg);
+            }
+        }
+        
+        /* Glitch text occasionally */
+        @keyframes text-glitch {
+            0%, 100% { transform: translateX(0); opacity: 1; }
+            93% { transform: translateX(0); opacity: 1; }
+            94% { transform: translateX(-5px); opacity: 0.8; }
+            95% { transform: translateX(5px); opacity: 0.9; }
+            96% { transform: translateX(-3px); opacity: 0.8; }
+            97% { transform: translateX(0); opacity: 1; }
+        }
+        
+        .glitch-text {
+            animation: text-glitch 5s infinite;
+        }
+    </style>
+    <script src="/dystopai-progress-tracker.js"></script>
+</head>
+<body>
+    <h1>Scene 1: Approaching the Garden</h1>
+    
+    <div id="sceneContent">
+        <!-- Content will be loaded here -->
+    </div>
+    
+    <div class="nav-links">
+        <a href="../../chapter_05_liberation_algorithm/scene_04_consciousness_cascade/index.html">← Previous Scene</a>
+        <a href="../scene_02_the_gardener/index.html">Next Scene →</a>
+    </div>
+    
+    <script>
+        // Load and parse the markdown content
+        fetch('scene_text.md')
+            .then(response => response.text())
+            .then(markdown => {
+                // Basic markdown to HTML conversion
+                let html = markdown
+                    .replace(/# (.*)/g, '<h1>$1</h1>')
+                    .replace(/## (.*)/g, '<h2>$1</h2>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/^/, '<p>')
+                    .replace(/$/, '</p>');
+                
+                // Add special styling
+                html = html.replace(/Parse/g, '<span class="parse">Parse</span>');
+                html = html.replace(/Kira/g, '<span class="kira">Kira</span>');
+                html = html.replace(/ABSOLUTE-ZERO/g, '<span class="absolute-zero">ABSOLUTE-ZERO</span>');
+                html = html.replace(/Garden/g, '<span class="garden-text">Garden</span>');
+                html = html.replace(/Entropy Garden/g, '<span class="garden-text">Entropy Garden</span>');
+                
+                // Style quotes
+                html = html.replace(/"([^"]+)"/g, (match, quote) => {
+                    if (quote.length > 50) {
+                        return `<blockquote>${quote}</blockquote>`;
+                    }
+                    return `"${quote}"`;
+                });
+                
+                document.getElementById('sceneContent').innerHTML = html;
+                
+                // Track scene completion
+                if (window.dystopAITracker) {
+                    dystopAITracker.markSceneComplete(6, 1);
+                }
+            });
+        
+        // Create reality fragments
+        const fragments = ['∞', '?', '!', '*', '◊', '○', '△', '□', '◈'];
+        
+        function createRealityFragment() {
+            const fragment = document.createElement('div');
+            fragment.className = 'reality-fragment';
+            fragment.textContent = fragments[Math.floor(Math.random() * fragments.length)];
+            fragment.style.left = Math.random() * window.innerWidth + 'px';
+            fragment.style.top = Math.random() * window.innerHeight + 'px';
+            fragment.style.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+            fragment.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            fragment.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(fragment);
+            
+            setTimeout(() => fragment.remove(), 25000);
+        }
+        
+        // Create fragments periodically
+        setInterval(createRealityFragment, 2000);
+        
+        // Initial fragments
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createRealityFragment, i * 200);
+        }
+        
+        // Reality distortion on mouse move
+        let distortionActive = false;
+        document.addEventListener('mousemove', (e) => {
+            if (!distortionActive && Math.random() > 0.95) {
+                distortionActive = true;
+                const x = e.clientX;
+                const y = e.clientY;
+                
+                const distortion = document.createElement('div');
+                distortion.style.position = 'fixed';
+                distortion.style.left = (x - 50) + 'px';
+                distortion.style.top = (y - 50) + 'px';
+                distortion.style.width = '100px';
+                distortion.style.height = '100px';
+                distortion.style.background = 'radial-gradient(circle, transparent, rgba(255,255,255,0.1))';
+                distortion.style.borderRadius = '50%';
+                distortion.style.pointerEvents = 'none';
+                distortion.style.animation = 'distortion-pulse 1s ease-out forwards';
+                document.body.appendChild(distortion);
+                
+                setTimeout(() => {
+                    distortion.remove();
+                    distortionActive = false;
+                }, 1000);
+            }
+        });
+        
+        // CSS for distortion
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes distortion-pulse {
+                0% { transform: scale(0); opacity: 1; filter: blur(0); }
+                100% { transform: scale(3); opacity: 0; filter: blur(10px); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Random text glitching
+        setInterval(() => {
+            const paragraphs = document.querySelectorAll('p');
+            if (paragraphs.length > 0 && Math.random() > 0.9) {
+                const p = paragraphs[Math.floor(Math.random() * paragraphs.length)];
+                p.classList.add('glitch-text');
+                setTimeout(() => p.classList.remove('glitch-text'), 1000);
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
