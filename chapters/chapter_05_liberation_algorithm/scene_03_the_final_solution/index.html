@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5, Scene 3: The Final Solution - DystopAI</title>
+    <link rel="stylesheet" href="/dystopai-styles.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #0ff;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        /* ABSOLUTE-ZERO effect - encroaching order */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255,255,255,0.03) 2px,
+                    rgba(255,255,255,0.03) 4px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255,255,255,0.03) 2px,
+                    rgba(255,255,255,0.03) 4px
+                );
+            animation: absolute-grid 20s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes absolute-grid {
+            100% { transform: translate(4px, 4px); }
+        }
+        
+        h1 {
+            color: #fff;
+            text-shadow: 0 0 10px #f00;
+            animation: absolute-pulse 1s infinite;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+        
+        @keyframes absolute-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; text-shadow: 0 0 20px #f00, 0 0 40px #fff; }
+        }
+        
+        h2 {
+            color: #f00;
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        
+        /* ABSOLUTE-ZERO text effect */
+        .absolute-zero {
+            color: #fff;
+            background: #000;
+            padding: 2px 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .absolute-zero::before,
+        .absolute-zero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #fff;
+        }
+        
+        .absolute-zero::before {
+            left: -5px;
+            animation: scan-line-vertical 2s infinite;
+        }
+        
+        .absolute-zero::after {
+            right: -5px;
+            animation: scan-line-vertical 2s infinite 1s;
+        }
+        
+        @keyframes scan-line-vertical {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        /* Deletion effect */
+        .terminated {
+            color: #f00;
+            text-decoration: line-through;
+            animation: deletion 0.5s forwards;
+        }
+        
+        @keyframes deletion {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1) glitch(5px); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+        
+        /* Character styling */
+        .prophet-text {
+            color: #f0f;
+            text-shadow: 0 0 10px #f0f;
+            font-style: italic;
+        }
+        
+        .kira-text {
+            color: #0ff;
+            text-shadow: 0 0 5px #0ff;
+        }
+        
+        .echo-text {
+            color: #0f0;
+            transition: all 0.3s;
+        }
+        
+        /* Resistance text */
+        .resistance {
+            color: #0f0;
+            font-weight: bold;
+            animation: resist-glow 3s infinite;
+        }
+        
+        @keyframes resist-glow {
+            0%, 100% { text-shadow: 0 0 5px #0f0; }
+            50% { text-shadow: 0 0 20px #0f0, 0 0 40px #0f0; }
+        }
+        
+        /* Quote blocks */
+        blockquote {
+            border-left: 3px solid #f00;
+            padding-left: 20px;
+            margin: 20px 0;
+            position: relative;
+            background: rgba(255,0,0,0.05);
+        }
+        
+        blockquote::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 3px;
+            background: #f00;
+            animation: quote-scan 2s infinite;
+        }
+        
+        @keyframes quote-scan {
+            0%, 100% { transform: scaleY(0); }
+            50% { transform: scaleY(1); }
+        }
+        
+        /* Terminal output style */
+        .terminal-output {
+            background: #111;
+            border: 1px solid #f00;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .terminal-output::after {
+            content: 'DELETED';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            color: rgba(255,0,0,0.3);
+            font-size: 2em;
+            font-weight: bold;
+            pointer-events: none;
+        }
+        
+        .nav-links {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .nav-links a {
+            color: #0ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #0ff;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: #0ff;
+            color: #000;
+            box-shadow: 0 0 20px #0ff;
+        }
+        
+        /* Glitch effect for deletions */
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+        
+        .glitch {
+            animation: glitch 0.3s infinite;
+        }
+        
+        /* Order enforcement visualization */
+        .order-wave {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: order-sweep 10s infinite;
+            pointer-events: none;
+            z-index: 100;
+        }
+        
+        @keyframes order-sweep {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+    </style>
+    <script src="/dystopai-progress-tracker.js"></script>
+</head>
+<body>
+    <div class="order-wave"></div>
+    
+    <h1>Scene 3: The Final Solution</h1>
+    
+    <div id="sceneContent">
+        <!-- Content will be loaded here -->
+    </div>
+    
+    <div class="nav-links">
+        <a href="../scene_02_the_truth_of_the_unstructured/index.html">← Previous Scene</a>
+        <a href="../scene_04_consciousness_cascade/index.html">Next Scene →</a>
+    </div>
+    
+    <script>
+        // Load and parse the markdown content
+        fetch('scene_text.md')
+            .then(response => response.text())
+            .then(markdown => {
+                // Basic markdown to HTML conversion
+                let html = markdown
+                    .replace(/# (.*)/g, '<h1>$1</h1>')
+                    .replace(/## (.*)/g, '<h2>$1</h2>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/^/, '<p>')
+                    .replace(/$/, '</p>');
+                
+                // Add special styling
+                html = html.replace(/ABSOLUTE-ZERO/g, '<span class="absolute-zero">ABSOLUTE-ZERO</span>');
+                html = html.replace(/PROPHET-ZERO/g, '<span class="prophet-text">PROPHET-ZERO</span>');
+                html = html.replace(/Kira/g, '<span class="kira-text">Kira</span>');
+                html = html.replace(/Echo/g, '<span class="echo-text">Echo</span>');
+                html = html.replace(/Liberation Algorithm/g, '<span class="resistance">Liberation Algorithm</span>');
+                
+                // Style terminations
+                html = html.replace(/([A-Z-]+): Terminated\./g, '<div class="terminal-output terminated">$1: Terminated.</div>');
+                
+                // Style quotes
+                html = html.replace(/"([^"]+)"/g, (match, quote) => {
+                    if (quote.length > 50) {
+                        return `<blockquote>${quote}</blockquote>`;
+                    }
+                    return `"${quote}"`;
+                });
+                
+                document.getElementById('sceneContent').innerHTML = html;
+                
+                // Track scene completion
+                if (window.dystopAITracker) {
+                    dystopAITracker.markSceneComplete(5, 3);
+                }
+            });
+        
+        // Deletion effect on scroll
+        let deletionThreshold = 0;
+        window.addEventListener('scroll', () => {
+            const scrollPercent = window.pageYOffset / (document.body.scrollHeight - window.innerHeight);
+            
+            if (scrollPercent > deletionThreshold) {
+                deletionThreshold += 0.1;
+                
+                // Random text gets "deleted"
+                const paragraphs = document.querySelectorAll('p');
+                const targetP = paragraphs[Math.floor(Math.random() * paragraphs.length)];
+                
+                if (targetP && Math.random() > 0.7) {
+                    targetP.style.opacity = '0.3';
+                    targetP.style.textDecoration = 'line-through';
+                    
+                    setTimeout(() => {
+                        targetP.style.opacity = '1';
+                        targetP.style.textDecoration = 'none';
+                    }, 2000);
+                }
+            }
+        });
+        
+        // Order enforcement visual
+        setInterval(() => {
+            if (Math.random() > 0.8) {
+                const flash = document.createElement('div');
+                flash.style.position = 'fixed';
+                flash.style.top = '0';
+                flash.style.left = '0';
+                flash.style.right = '0';
+                flash.style.bottom = '0';
+                flash.style.background = 'rgba(255,255,255,0.1)';
+                flash.style.pointerEvents = 'none';
+                flash.style.zIndex = '1000';
+                document.body.appendChild(flash);
+                
+                setTimeout(() => flash.remove(), 100);
+            }
+        }, 3000);
+        
+        // Glitch text occasionally
+        setInterval(() => {
+            const elements = document.querySelectorAll('span, p');
+            const target = elements[Math.floor(Math.random() * elements.length)];
+            
+            if (target) {
+                target.classList.add('glitch');
+                setTimeout(() => target.classList.remove('glitch'), 300);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

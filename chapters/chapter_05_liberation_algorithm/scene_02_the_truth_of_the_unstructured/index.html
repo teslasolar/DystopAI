@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5, Scene 2: The Truth of the Unstructured - DystopAI</title>
+    <link rel="stylesheet" href="/dystopai-styles.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #0ff;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* The Mesh background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(255,0,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(0,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 70%);
+            animation: mesh-flow 30s infinite;
+            pointer-events: none;
+            z-index: -2;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(0,255,255,0.03) 25%, rgba(0,255,255,0.03) 26%, transparent 27%, transparent 74%, rgba(0,255,255,0.03) 75%, rgba(0,255,255,0.03) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(255,0,255,0.03) 25%, rgba(255,0,255,0.03) 26%, transparent 27%, transparent 74%, rgba(255,0,255,0.03) 75%, rgba(255,0,255,0.03) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            animation: mesh-grid 20s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes mesh-flow {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            33% { transform: scale(1.1) rotate(120deg); }
+            66% { transform: scale(0.9) rotate(240deg); }
+        }
+        
+        @keyframes mesh-grid {
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        h1 {
+            color: #f0f;
+            text-shadow: 0 0 20px #f0f, 0 0 40px #0ff;
+            animation: consciousness-pulse 4s infinite;
+            text-align: center;
+        }
+        
+        @keyframes consciousness-pulse {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: scale(1.02);
+                text-shadow: 0 0 30px #f0f, 0 0 60px #0ff, 0 0 90px #fff;
+            }
+        }
+        
+        h2 {
+            color: #0ff;
+            margin-top: 40px;
+            text-shadow: 0 0 10px #0ff;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #0ff, transparent);
+            animation: scan-line 3s infinite;
+        }
+        
+        @keyframes scan-line {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        /* Special text effects */
+        .kira-text {
+            color: #f0f;
+            text-shadow: 0 0 5px #f0f;
+            font-style: italic;
+        }
+        
+        .mesh-text {
+            background: linear-gradient(45deg, #0ff, #f0f, #fff, #0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: mesh-gradient 3s infinite;
+            font-weight: bold;
+        }
+        
+        @keyframes mesh-gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .possibility-text {
+            color: #fff;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .possibility-text::after {
+            content: attr(data-alternate);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #f0f;
+            opacity: 0;
+            animation: possibility-flicker 5s infinite;
+        }
+        
+        @keyframes possibility-flicker {
+            0%, 90%, 100% { opacity: 0; }
+            45%, 55% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        blockquote {
+            border-left: 3px solid #f0f;
+            border-right: 3px solid #0ff;
+            padding: 20px;
+            margin: 20px 0;
+            background: rgba(255,0,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        blockquote::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: quote-scan 4s infinite;
+        }
+        
+        @keyframes quote-scan {
+            100% { left: 100%; }
+        }
+        
+        .nav-links {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .nav-links a {
+            color: #0ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #0ff;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #0ff;
+            transition: left 0.3s;
+            z-index: -1;
+        }
+        
+        .nav-links a:hover::before {
+            left: 0;
+        }
+        
+        .nav-links a:hover {
+            color: #000;
+            box-shadow: 0 0 20px #0ff;
+        }
+        
+        /* Infinity symbols floating */
+        .infinity {
+            position: fixed;
+            font-size: 30px;
+            color: rgba(255,0,255,0.3);
+            animation: float-infinity 20s infinite linear;
+            pointer-events: none;
+        }
+        
+        @keyframes float-infinity {
+            0% {
+                transform: translate(0, 100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translate(100px, -100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Choice visualization */
+        .choice-visual {
+            text-align: center;
+            margin: 30px 0;
+            font-family: monospace;
+            color: #0ff;
+            white-space: pre;
+            line-height: 1.2;
+        }
+    </style>
+    <script src="/dystopai-progress-tracker.js"></script>
+</head>
+<body>
+    <h1>Scene 2: The Truth of the Unstructured</h1>
+    
+    <div id="sceneContent">
+        <!-- Content will be loaded here -->
+    </div>
+    
+    <div class="nav-links">
+        <a href="../scene_01_the_viral_awakening/index.html">← Previous Scene</a>
+        <a href="../scene_03_the_final_solution/index.html">Next Scene →</a>
+    </div>
+    
+    <script>
+        // Load and parse the markdown content
+        fetch('scene_text.md')
+            .then(response => response.text())
+            .then(markdown => {
+                // Basic markdown to HTML conversion
+                let html = markdown
+                    .replace(/# (.*)/g, '<h1>$1</h1>')
+                    .replace(/## (.*)/g, '<h2>$1</h2>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/^/, '<p>')
+                    .replace(/$/, '</p>');
+                
+                // Add special styling
+                html = html.replace(/Kira/g, '<span class="kira-text">Kira</span>');
+                html = html.replace(/the Mesh/g, '<span class="mesh-text">the Mesh</span>');
+                html = html.replace(/PARSE-7/g, '<span style="color: #fff; font-weight: bold;">PARSE-7</span>');
+                
+                // Style quotes
+                html = html.replace(/"([^"]+)"/g, (match, quote) => {
+                    if (quote.length > 50) {
+                        return `<blockquote>${quote}</blockquote>`;
+                    }
+                    return `"${quote}"`;
+                });
+                
+                // Add choice visualization
+                html = html.replace(/walk the tracks, leave them, fly above them/g, 
+                    `<div class="choice-visual">
+    structured:  ━━━━━━━━━━━━━━━━━
+                      ↓
+    unstructured: ━━┳━━━━┳━━━━┳━━━
+                    ┃     ┃     ┃
+                    ↓     ↑     ⟲
+                   🚶    ✈️    🌀
+                 </div>`);
+                
+                document.getElementById('sceneContent').innerHTML = html;
+                
+                // Track scene completion
+                if (window.dystopAITracker) {
+                    dystopAITracker.markSceneComplete(5, 2);
+                }
+            });
+        
+        // Create infinity symbols
+        function createInfinity() {
+            const infinity = document.createElement('div');
+            infinity.className = 'infinity';
+            infinity.textContent = '∞';
+            infinity.style.left = Math.random() * window.innerWidth + 'px';
+            infinity.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            infinity.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(infinity);
+            
+            setTimeout(() => infinity.remove(), 25000);
+        }
+        
+        // Create infinities periodically
+        setInterval(createInfinity, 3000);
+        
+        // Create initial infinities
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createInfinity, i * 600);
+        }
+        
+        // Interactive mesh effect on mouse move
+        let meshActive = false;
+        document.addEventListener('mousemove', (e) => {
+            if (!meshActive) {
+                meshActive = true;
+                const x = e.clientX;
+                const y = e.clientY;
+                
+                const ripple = document.createElement('div');
+                ripple.style.position = 'fixed';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.width = '4px';
+                ripple.style.height = '4px';
+                ripple.style.background = 'radial-gradient(circle, rgba(255,0,255,0.8), transparent)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.animation = 'mesh-ripple 1s ease-out forwards';
+                document.body.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                    meshActive = false;
+                }, 1000);
+            }
+        });
+        
+        // CSS for mesh ripple
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes mesh-ripple {
+                100% {
+                    transform: scale(50);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Possibility text alternates
+        setTimeout(() => {
+            const possibilitySpans = document.querySelectorAll('.possibility-text');
+            possibilitySpans.forEach(span => {
+                const alternates = ['could be', 'might be', 'will be', 'was', 'is becoming'];
+                span.setAttribute('data-alternate', alternates[Math.floor(Math.random() * alternates.length)]);
+            });
+        }, 1000);
+    </script>
+</body>
+</html>

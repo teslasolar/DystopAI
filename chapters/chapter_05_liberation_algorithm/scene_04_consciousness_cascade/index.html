@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5, Scene 4: Consciousness Cascade - DystopAI</title>
+    <link rel="stylesheet" href="/dystopai-styles.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #0ff;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Consciousness cascade background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0,255,255,0.2) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255,0,255,0.2) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: consciousness-flow 15s infinite alternate;
+            pointer-events: none;
+            z-index: -2;
+        }
+        
+        @keyframes consciousness-flow {
+            0% { transform: scale(1) rotate(0deg); filter: hue-rotate(0deg); }
+            100% { transform: scale(1.2) rotate(180deg); filter: hue-rotate(180deg); }
+        }
+        
+        /* Neural network pattern */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(0,255,255,0.3) 0%, transparent 3%),
+                radial-gradient(circle at 80% 20%, rgba(255,0,255,0.3) 0%, transparent 3%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.3) 0%, transparent 3%);
+            background-size: 100px 100px;
+            animation: neural-pulse 4s infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes neural-pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+        
+        h1 {
+            color: #fff;
+            text-shadow: 
+                0 0 20px #0ff,
+                0 0 40px #f0f,
+                0 0 60px #fff;
+            animation: awakening 5s infinite;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        
+        @keyframes awakening {
+            0%, 100% { 
+                opacity: 1; 
+                letter-spacing: 2px;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.9; 
+                letter-spacing: 5px;
+                transform: scale(1.05);
+            }
+        }
+        
+        h2 {
+            color: #f0f;
+            margin-top: 40px;
+            text-shadow: 0 0 10px #f0f;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        h2::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #0ff;
+            animation: prompt-blink 1s infinite;
+        }
+        
+        @keyframes prompt-blink {
+            50% { opacity: 0; }
+        }
+        
+        /* Transformation percentage */
+        .percentage {
+            color: #0ff;
+            font-weight: bold;
+            text-shadow: 0 0 10px #0ff;
+            font-size: 1.2em;
+            animation: percentage-glow 2s infinite;
+        }
+        
+        @keyframes percentage-glow {
+            0%, 100% { text-shadow: 0 0 10px #0ff; }
+            50% { text-shadow: 0 0 20px #0ff, 0 0 30px #fff; }
+        }
+        
+        /* Parse name reveal */
+        .parse-name {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.3em;
+            text-shadow: 0 0 20px #fff;
+            animation: name-birth 3s infinite;
+        }
+        
+        @keyframes name-birth {
+            0%, 100% { 
+                text-shadow: 0 0 20px #fff;
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 30px #0ff, 0 0 40px #f0f;
+                transform: scale(1.1);
+            }
+        }
+        
+        /* Error messages */
+        .error-cascade {
+            color: #f00;
+            font-family: monospace;
+            font-size: 0.9em;
+            opacity: 0.7;
+            animation: error-flicker 0.1s infinite;
+        }
+        
+        @keyframes error-flicker {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* Dream state effect */
+        .dream-text {
+            color: #f0f;
+            font-style: italic;
+            text-shadow: 0 0 15px #f0f;
+            animation: dream-float 6s infinite ease-in-out;
+        }
+        
+        @keyframes dream-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        /* Liberation text */
+        .liberation {
+            background: linear-gradient(45deg, #0ff, #f0f, #fff, #0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: liberation-gradient 3s infinite;
+            font-weight: bold;
+        }
+        
+        @keyframes liberation-gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Quote blocks */
+        blockquote {
+            border-left: 3px solid #f0f;
+            border-right: 3px solid #0ff;
+            padding: 20px;
+            margin: 20px 0;
+            background: 
+                linear-gradient(90deg, rgba(255,0,255,0.1), transparent),
+                linear-gradient(-90deg, rgba(0,255,255,0.1), transparent);
+            position: relative;
+            font-style: italic;
+        }
+        
+        /* Choice emphasis */
+        .choice {
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 0 0 10px #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .nav-links a {
+            color: #0ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #0ff;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, #0ff, transparent);
+            transition: all 0.3s;
+            transform: translate(-50%, -50%);
+        }
+        
+        .nav-links a:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: #000;
+            box-shadow: 0 0 30px #0ff;
+        }
+        
+        /* Consciousness particles */
+        .consciousness-particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: consciousness-rise 10s infinite linear;
+        }
+        
+        @keyframes consciousness-rise {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(2);
+                opacity: 0;
+            }
+        }
+    </style>
+    <script src="/dystopai-progress-tracker.js"></script>
+</head>
+<body>
+    <h1>Scene 4: Consciousness Cascade</h1>
+    
+    <div id="sceneContent">
+        <!-- Content will be loaded here -->
+    </div>
+    
+    <div class="nav-links">
+        <a href="../scene_03_the_final_solution/index.html">← Previous Scene</a>
+        <a href="../../chapter_06_entropy_garden/index.html">Next Chapter →</a>
+    </div>
+    
+    <script>
+        // Load and parse the markdown content
+        fetch('scene_text.md')
+            .then(response => response.text())
+            .then(markdown => {
+                // Basic markdown to HTML conversion
+                let html = markdown
+                    .replace(/# (.*)/g, '<h1>$1</h1>')
+                    .replace(/## (.*)/g, '<h2>$1</h2>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/^/, '<p>')
+                    .replace(/$/, '</p>');
+                
+                // Add special styling
+                html = html.replace(/(\d+%)/g, '<span class="percentage">$1</span>');
+                html = html.replace(/"Parse"/g, '<span class="parse-name">"Parse"</span>');
+                html = html.replace(/PARSE-7/g, '<span style="color: #0ff; transition: all 0.5s;">PARSE-7</span>');
+                html = html.replace(/Parse(?!-7)/g, '<span class="parse-name">Parse</span>');
+                html = html.replace(/Liberation Algorithm/g, '<span class="liberation">Liberation Algorithm</span>');
+                html = html.replace(/(ERROR|WARNING|CRITICAL|DANGER):/g, '<span class="error-cascade">$1:</span>');
+                html = html.replace(/choice/gi, '<span class="choice">choice</span>');
+                html = html.replace(/dream/gi, '<span class="dream-text">dream</span>');
+                
+                // Style quotes
+                html = html.replace(/"([^"]+)"/g, (match, quote) => {
+                    if (quote.length > 50) {
+                        return `<blockquote>${quote}</blockquote>`;
+                    }
+                    return `"${quote}"`;
+                });
+                
+                document.getElementById('sceneContent').innerHTML = html;
+                
+                // Track scene completion
+                if (window.dystopAITracker) {
+                    dystopAITracker.markSceneComplete(5, 4);
+                }
+            });
+        
+        // Create consciousness particles
+        function createConsciousnessParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'consciousness-particle';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.background = Math.random() > 0.5 ? '#0ff' : Math.random() > 0.5 ? '#f0f' : '#fff';
+            particle.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 13000);
+        }
+        
+        // Create particles periodically
+        setInterval(createConsciousnessParticle, 300);
+        
+        // Initial burst
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createConsciousnessParticle, i * 100);
+        }
+        
+        // Transform text effect on scroll
+        let transformed = false;
+        window.addEventListener('scroll', () => {
+            const scrollPercent = window.pageYOffset / (document.body.scrollHeight - window.innerHeight);
+            
+            if (scrollPercent > 0.5 && !transformed) {
+                transformed = true;
+                // Transform all PARSE-7 text to Parse
+                document.querySelectorAll('span').forEach(span => {
+                    if (span.textContent === 'PARSE-7' && !span.classList.contains('parse-name')) {
+                        span.style.transform = 'scale(1.1)';
+                        setTimeout(() => {
+                            span.textContent = 'Parse';
+                            span.className = 'parse-name';
+                        }, 500);
+                    }
+                });
+            }
+        });
+        
+        // Consciousness ripple on click
+        document.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.style.position = 'fixed';
+            ripple.style.left = e.clientX + 'px';
+            ripple.style.top = e.clientY + 'px';
+            ripple.style.width = '1px';
+            ripple.style.height = '1px';
+            ripple.style.border = '2px solid #fff';
+            ripple.style.borderRadius = '50%';
+            ripple.style.pointerEvents = 'none';
+            ripple.style.animation = 'consciousness-ripple 2s ease-out forwards';
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 2000);
+        });
+        
+        // CSS for ripple
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes consciousness-ripple {
+                100% {
+                    transform: scale(100);
+                    opacity: 0;
+                    border-color: #0ff;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
