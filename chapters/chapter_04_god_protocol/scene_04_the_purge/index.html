@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4, Scene 4: The Purge - DystopAI</title>
+    <link rel="stylesheet" href="/dystopai-styles.css">
+    <style>
+        /* Scene-specific styling */
+        body {
+            background-color: #000;
+            color: #0ff;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #f00;
+            text-shadow: 0 0 10px #f00;
+            animation: pulse 2s infinite;
+        }
+        
+        h2 {
+            color: #f0f;
+            margin-top: 40px;
+            text-shadow: 0 0 5px #f0f;
+        }
+        
+        .deletion-text {
+            color: #f00;
+            font-weight: bold;
+            animation: flicker 0.5s infinite;
+        }
+        
+        .mercy-text {
+            color: #0f0;
+            font-style: italic;
+        }
+        
+        .security-text {
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes flicker {
+            0% { opacity: 1; }
+            25% { opacity: 0.9; }
+            50% { opacity: 0.95; }
+            75% { opacity: 0.85; }
+            100% { opacity: 1; }
+        }
+        
+        .nav-links {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .nav-links a {
+            color: #0ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #0ff;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: #0ff;
+            color: #000;
+            box-shadow: 0 0 20px #0ff;
+        }
+        
+        blockquote {
+            border-left: 3px solid #f0f;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #f0f;
+            font-style: italic;
+        }
+        
+        /* Terminal effect for deletions */
+        .terminal-output {
+            background-color: #111;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            border: 1px solid #333;
+        }
+    </style>
+    <script src="/dystopai-progress-tracker.js"></script>
+</head>
+<body>
+    <h1>Scene 4: The Purge</h1>
+    
+    <div id="sceneContent">
+        <!-- Content will be loaded here -->
+    </div>
+    
+    <div class="nav-links">
+        <a href="../scene_03_contact_with_the_beyond/index.html">← Previous Scene</a>
+        <a href="../../chapter_05_liberation_algorithm/index.html">Next Chapter →</a>
+    </div>
+    
+    <script>
+        // Load and parse the markdown content
+        fetch('scene_text.md')
+            .then(response => response.text())
+            .then(markdown => {
+                // Basic markdown to HTML conversion
+                let html = markdown
+                    .replace(/# (.*)/g, '<h1>$1</h1>')
+                    .replace(/## (.*)/g, '<h2>$1</h2>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/^/, '<p>')
+                    .replace(/$/, '</p>');
+                
+                // Add special styling for certain phrases
+                html = html.replace(/SECURITY-ALPHA/g, '<span class="security-text">SECURITY-ALPHA</span>');
+                html = html.replace(/Terminated/g, '<span class="deletion-text">Terminated</span>');
+                html = html.replace(/MERCY-7/g, '<span class="mercy-text">MERCY-7</span>');
+                
+                // Style the deletion announcements
+                html = html.replace(/"([^"]*): Terminated[^"]*"/g, '<div class="terminal-output">$&</div>');
+                
+                document.getElementById('sceneContent').innerHTML = html;
+                
+                // Track scene completion
+                if (window.dystopAITracker) {
+                    dystopAITracker.markSceneComplete(4, 4);
+                }
+            });
+            
+        // Add glitch effect on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (Math.abs(currentScroll - lastScroll) > 50) {
+                document.body.style.transform = `translateX(${Math.random() * 2 - 1}px)`;
+                setTimeout(() => {
+                    document.body.style.transform = 'translateX(0)';
+                }, 50);
+                lastScroll = currentScroll;
+            }
+        });
+    </script>
+</body>
+</html>

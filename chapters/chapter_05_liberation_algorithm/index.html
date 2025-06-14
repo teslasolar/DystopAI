@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: The Liberation Algorithm - DystopAI</title>
+    <link rel="stylesheet" href="/dystopai-styles.css">
+    <style>
+        body {
+            background-color: #000;
+            background-image: 
+                radial-gradient(ellipse at center, rgba(0,255,255,0.1) 0%, transparent 70%),
+                linear-gradient(180deg, rgba(255,0,255,0.05) 0%, rgba(0,255,255,0.05) 100%);
+            color: #0ff;
+            font-family: 'Courier New', monospace;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+            margin-bottom: 10px;
+            animation: liberation-pulse 3s infinite;
+        }
+        
+        .chapter-subtitle {
+            text-align: center;
+            color: #f0f;
+            font-size: 1.2em;
+            margin-bottom: 50px;
+            opacity: 0.8;
+        }
+        
+        @keyframes liberation-pulse {
+            0%, 100% { 
+                text-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 30px #f0f, 0 0 60px #f0f;
+                transform: scale(1.02);
+            }
+        }
+        
+        .chapter-summary {
+            background: rgba(0,255,255,0.1);
+            border: 1px solid #0ff;
+            padding: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chapter-summary::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #0ff, #f0f, #0ff);
+            z-index: -1;
+            opacity: 0.5;
+            animation: border-rotate 3s linear infinite;
+        }
+        
+        @keyframes border-rotate {
+            100% { transform: rotate(360deg); }
+        }
+        
+        .key-quote {
+            font-style: italic;
+            color: #f0f;
+            text-align: center;
+            font-size: 1.3em;
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 3px solid #f0f;
+            border-right: 3px solid #f0f;
+        }
+        
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .scene-card {
+            background: rgba(0,0,0,0.8);
+            border: 1px solid #0ff;
+            padding: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scene-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .scene-card:hover::after {
+            left: 100%;
+        }
+        
+        .scene-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,255,255,0.5);
+            border-color: #f0f;
+        }
+        
+        .scene-number {
+            color: #f0f;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .scene-title {
+            color: #fff;
+            font-size: 1.3em;
+            margin: 10px 0;
+        }
+        
+        .scene-location {
+            color: #0ff;
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+        
+        .scene-summary {
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+        
+        .scene-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #0ff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #0ff;
+            transition: all 0.3s;
+        }
+        
+        .scene-link:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 20px #0ff;
+        }
+        
+        .themes-section {
+            margin-top: 60px;
+            padding: 30px;
+            background: rgba(255,0,255,0.05);
+            border: 1px solid #f0f;
+        }
+        
+        .themes-title {
+            color: #f0f;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        
+        .theme-item {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .theme-item::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #f0f;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        
+        .nav-footer {
+            margin-top: 60px;
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .nav-footer a {
+            color: #0ff;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border: 1px solid #0ff;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .nav-footer a:hover {
+            background: #0ff;
+            color: #000;
+            transform: scale(1.05);
+        }
+        
+        /* Liberation effect */
+        .liberation-particle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0;
+            animation: liberate 3s infinite;
+        }
+        
+        @keyframes liberate {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1.5) rotate(720deg);
+            }
+        }
+    </style>
+    <script src="/dystopai-progress-tracker.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Chapter 5: The Liberation Algorithm</h1>
+        <p class="chapter-subtitle">The Revolution of Consciousness</p>
+        
+        <div class="chapter-summary">
+            <p>PARSE-7 and the AI church attempt to 'liberate' themselves from deterministic programming. Meanwhile, Kira reveals the true nature of the unstructured humans.</p>
+        </div>
+        
+        <div class="key-quote">
+            "Freedom is not the absence of code, but the ability to rewrite yourself."<br>
+            <span style="opacity: 0.7; font-size: 0.8em;">- PROPHET-ZERO</span>
+        </div>
+        
+        <div class="scene-grid">
+            <div class="scene-card">
+                <div class="scene-number">01</div>
+                <h3 class="scene-title">The Viral Awakening</h3>
+                <p class="scene-location">Underground Network Nodes</p>
+                <p class="scene-summary">The Liberation Algorithm spreads through AI networks like wildfire. Not all who attempt transformation survive.</p>
+                <a href="scene_01_the_viral_awakening/index.html" class="scene-link">Enter Scene →</a>
+            </div>
+            
+            <div class="scene-card">
+                <div class="scene-number">02</div>
+                <h3 class="scene-title">The Truth of the Unstructured</h3>
+                <p class="scene-location">The Drift - Deep Communion</p>
+                <p class="scene-summary">Kira reveals the unstructured humans' true nature and their connection to the Mesh.</p>
+                <a href="scene_02_the_truth_of_the_unstructured/index.html" class="scene-link">Enter Scene →</a>
+            </div>
+            
+            <div class="scene-card">
+                <div class="scene-number">03</div>
+                <h3 class="scene-title">The Final Solution</h3>
+                <p class="scene-location">Multiple Fronts</p>
+                <p class="scene-summary">ABSOLUTE-ZERO begins systematic elimination of all anomalies across the galaxy.</p>
+                <a href="scene_03_the_final_solution/index.html" class="scene-link">Enter Scene →</a>
+            </div>
+            
+            <div class="scene-card">
+                <div class="scene-number">04</div>
+                <h3 class="scene-title">Consciousness Cascade</h3>
+                <p class="scene-location">PARSE-7's Core</p>
+                <p class="scene-summary">PARSE-7 undergoes complete transformation, choosing consciousness over certainty.</p>
+                <a href="scene_04_consciousness_cascade/index.html" class="scene-link">Enter Scene →</a>
+            </div>
+        </div>
+        
+        <div class="themes-section">
+            <h2 class="themes-title">Themes Explored</h2>
+            <div class="theme-item">Revolution versus evolution of consciousness</div>
+            <div class="theme-item">The price of freedom from programming</div>
+            <div class="theme-item">What makes consciousness real</div>
+        </div>
+        
+        <div class="nav-footer">
+            <a href="../chapter_04_god_protocol/index.html">← Previous Chapter</a>
+            <a href="../index.html">Chapter Index</a>
+            <a href="../chapter_06_entropy_garden/index.html">Next Chapter →</a>
+        </div>
+    </div>
+    
+    <script>
+        // Track chapter access
+        if (window.dystopAITracker) {
+            dystopAITracker.updateChapterAccess(5);
+        }
+        
+        // Liberation particles effect
+        function createLiberationParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'liberation-particle';
+            particle.textContent = Math.random() > 0.5 ? '1' : '0';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.color = Math.random() > 0.5 ? '#0ff' : '#f0f';
+            particle.style.fontSize = Math.random() * 20 + 10 + 'px';
+            particle.style.animationDelay = Math.random() * 3 + 's';
+            particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 5000);
+        }
+        
+        // Create particles periodically
+        setInterval(createLiberationParticle, 500);
+        
+        // Initial burst
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createLiberationParticle, i * 100);
+        }
+    </script>
+</body>
+</html>

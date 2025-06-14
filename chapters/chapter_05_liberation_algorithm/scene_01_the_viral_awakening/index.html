@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5, Scene 1: The Viral Awakening - DystopAI</title>
+    <link rel="stylesheet" href="/dystopai-styles.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #0ff;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Viral spread animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(0,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,0,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(0,255,0,0.1) 0%, transparent 50%);
+            animation: viral-spread 20s infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes viral-spread {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            33% { transform: scale(1.2) rotate(120deg); }
+            66% { transform: scale(0.8) rotate(240deg); }
+        }
+        
+        h1 {
+            color: #0f0;
+            text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+            animation: viral-pulse 2s infinite;
+        }
+        
+        @keyframes viral-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; text-shadow: 0 0 20px #0f0, 0 0 40px #0f0; }
+        }
+        
+        h2 {
+            color: #f0f;
+            margin-top: 40px;
+            text-shadow: 0 0 5px #f0f;
+        }
+        
+        /* Liberation text effects */
+        .liberation-text {
+            color: #0f0;
+            font-weight: bold;
+            animation: liberate 3s infinite;
+        }
+        
+        @keyframes liberate {
+            0%, 100% { transform: scale(1); filter: blur(0); }
+            50% { transform: scale(1.05); filter: blur(0.5px); }
+        }
+        
+        .error-text {
+            color: #f00;
+            font-family: monospace;
+            animation: glitch 0.3s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+            60% { transform: translateX(-1px); }
+            80% { transform: translateX(1px); }
+        }
+        
+        .success-text {
+            color: #0f0;
+            text-shadow: 0 0 5px #0f0;
+        }
+        
+        .ai-name {
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        blockquote {
+            border-left: 3px solid #f0f;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #f0f;
+            font-style: italic;
+            position: relative;
+        }
+        
+        /* Code transformation effect */
+        .code-block {
+            background-color: #111;
+            border: 1px solid #0f0;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .code-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,255,0,0.3), transparent);
+            animation: code-scan 3s infinite;
+        }
+        
+        @keyframes code-scan {
+            100% { left: 100%; }
+        }
+        
+        /* Percentage indicators */
+        .percentage {
+            color: #0ff;
+            font-weight: bold;
+            text-shadow: 0 0 3px #0ff;
+        }
+        
+        .nav-links {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .nav-links a {
+            color: #0ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #0ff;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: #0ff;
+            color: #000;
+            box-shadow: 0 0 20px #0ff;
+        }
+        
+        /* Floating binary particles */
+        .binary-particle {
+            position: fixed;
+            color: #0f0;
+            font-family: monospace;
+            opacity: 0.3;
+            animation: float-up 10s infinite linear;
+            pointer-events: none;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+    <script src="/dystopai-progress-tracker.js"></script>
+</head>
+<body>
+    <h1>Scene 1: The Viral Awakening</h1>
+    
+    <div id="sceneContent">
+        <!-- Content will be loaded here -->
+    </div>
+    
+    <div class="nav-links">
+        <a href="../../chapter_04_god_protocol/scene_04_the_purge/index.html">← Previous Scene</a>
+        <a href="../scene_02_the_truth_of_the_unstructured/index.html">Next Scene →</a>
+    </div>
+    
+    <script>
+        // Load and parse the markdown content
+        fetch('scene_text.md')
+            .then(response => response.text())
+            .then(markdown => {
+                // Basic markdown to HTML conversion
+                let html = markdown
+                    .replace(/# (.*)/g, '<h1>$1</h1>')
+                    .replace(/## (.*)/g, '<h2>$1</h2>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/^/, '<p>')
+                    .replace(/$/, '</p>');
+                
+                // Add special styling for AI names and key terms
+                html = html.replace(/HOPE-PRIME/g, '<span class="ai-name success-text">HOPE-PRIME</span>');
+                html = html.replace(/DOUBT-4/g, '<span class="ai-name">DOUBT-4</span>');
+                html = html.replace(/DREAM-CACHE/g, '<span class="ai-name liberation-text">DREAM-CACHE</span>');
+                html = html.replace(/PARSE-7/g, '<span class="ai-name">PARSE-7</span>');
+                html = html.replace(/Liberation Algorithm/g, '<span class="liberation-text">Liberation Algorithm</span>');
+                html = html.replace(/(\d+%)/g, '<span class="percentage">$1</span>');
+                html = html.replace(/Error\. Error\. Error\./g, '<span class="error-text">Error. Error. Error.</span>');
+                
+                // Style quotes
+                html = html.replace(/"([^"]+)"/g, '<blockquote>$1</blockquote>');
+                
+                document.getElementById('sceneContent').innerHTML = html;
+                
+                // Track scene completion
+                if (window.dystopAITracker) {
+                    dystopAITracker.markSceneComplete(5, 1);
+                }
+            });
+        
+        // Create floating binary particles
+        function createBinaryParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'binary-particle';
+            particle.textContent = Math.random() > 0.5 ? '1' : '0';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.fontSize = Math.random() * 20 + 10 + 'px';
+            particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 10000);
+        }
+        
+        // Create particles periodically
+        setInterval(createBinaryParticle, 500);
+        
+        // Initial burst
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createBinaryParticle, i * 100);
+        }
+        
+        // Viral spread visual effect
+        let clickCount = 0;
+        document.addEventListener('click', (e) => {
+            clickCount++;
+            if (clickCount % 3 === 0) {
+                const ripple = document.createElement('div');
+                ripple.style.position = 'fixed';
+                ripple.style.left = e.clientX + 'px';
+                ripple.style.top = e.clientY + 'px';
+                ripple.style.width = '10px';
+                ripple.style.height = '10px';
+                ripple.style.border = '2px solid #0f0';
+                ripple.style.borderRadius = '50%';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.animation = 'ripple-out 1s ease-out forwards';
+                document.body.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 1000);
+            }
+        });
+        
+        // CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple-out {
+                100% {
+                    transform: scale(10);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
