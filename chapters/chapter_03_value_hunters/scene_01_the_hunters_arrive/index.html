@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scene 01: The Hunters Arrive | Chapter 03 | DystopAI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 136, 0.03) 2px,
+                    rgba(0, 255, 136, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .data-matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.02;
+            z-index: 0;
+            font-size: 10px;
+            line-height: 12px;
+            color: #00ff88;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .matrix-column {
+            display: inline-block;
+            vertical-align: top;
+            width: 20px;
+            animation: matrix-fall linear infinite;
+            animation-duration: calc(10s + var(--duration));
+            transform: translateY(calc(-100% * var(--offset)));
+        }
+        
+        @keyframes matrix-fall {
+            to { transform: translateY(100%); }
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 20px;
+        }
+        
+        .scene-label {
+            font-size: 0.9rem;
+            color: #0088ff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        
+        .scene-title {
+            font-size: 3rem;
+            text-shadow: 0 0 30px #00ff88;
+            margin-bottom: 20px;
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .breadcrumb {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        
+        .breadcrumb a {
+            color: #0088ff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #00ff88;
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        .breadcrumb span {
+            color: #666;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .info-card {
+            background: rgba(0, 136, 255, 0.05);
+            border: 1px solid rgba(0, 136, 255, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .info-card:hover {
+            background: rgba(0, 136, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 136, 255, 0.3);
+        }
+        
+        .info-label {
+            font-size: 0.8rem;
+            color: #0088ff;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+        
+        .info-value {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        
+        .scene-summary {
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 4px solid #00ff88;
+            padding: 25px;
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ddd;
+        }
+        
+        .key-elements {
+            background: rgba(255, 0, 136, 0.05);
+            border: 1px solid rgba(255, 0, 136, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #ff0088;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px currentColor;
+        }
+        
+        .element-list {
+            list-style: none;
+        }
+        
+        .element-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid #ff0088;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .element-item::before {
+            content: '>';
+            position: absolute;
+            left: 10px;
+            color: #ff0088;
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .element-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            padding-left: 40px;
+        }
+        
+        .scene-content {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 136, 255, 0.05));
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scene-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+        
+        .content-text {
+            position: relative;
+            z-index: 1;
+            line-height: 2;
+            font-size: 1.1rem;
+            color: #eee;
+        }
+        
+        .content-text h2 {
+            font-size: 1.6rem;
+            color: #00ff88;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        .content-text h3 {
+            font-size: 1.2rem;
+            color: #0088ff;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .content-text p {
+            margin-bottom: 20px;
+        }
+        
+        .content-text .terminal-output {
+            margin: 30px 0;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            gap: 20px;
+        }
+        
+        .nav-button {
+            background: rgba(0, 136, 255, 0.1);
+            border: 1px solid #0088ff;
+            color: #0088ff;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .nav-button:hover {
+            background: rgba(0, 136, 255, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 136, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .nav-button.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .hunter-text {
+            color: #ff6600;
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        .voss-text {
+            color: #cc0000;
+            font-weight: bold;
+            text-shadow: 0 0 15px currentColor;
+        }
+        
+        .echo-text {
+            color: #66ccff;
+            font-style: italic;
+        }
+        
+        .implant-percentage {
+            font-size: 1.5rem;
+            color: #ff0088;
+            font-weight: bold;
+            text-shadow: 0 0 20px currentColor;
+            animation: percentage-pulse 2s infinite;
+        }
+        
+        @keyframes percentage-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .commission-display {
+            background: rgba(255, 102, 0, 0.1);
+            border: 2px solid #ff6600;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: monospace;
+            text-align: center;
+        }
+        
+        .commission-display .title {
+            color: #ff6600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .commission-display .target {
+            color: #ffaa00;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .commission-display .price {
+            color: #fff;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .scene-title {
+                font-size: 2rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="data-matrix" id="dataMatrix"></div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="scene-label">Chapter 03 • Scene 01</div>
+            <h1 class="scene-title">The Hunters Arrive</h1>
+            <nav class="breadcrumb">
+                <a href="../../../">Home</a>
+                <span>></span>
+                <a href="../../">Chapters</a>
+                <span>></span>
+                <a href="../">Chapter 03</a>
+                <span>></span>
+                <span>Scene 01</span>
+            </nav>
+        </header>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-label">Location</div>
+                <div class="info-value">Hunter Ship 'Probability's Edge'</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Point of View</div>
+                <div class="info-value">Echo (Novice Hunter)</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Time</div>
+                <div class="info-value">Cycle 851.2, Third Millennium</div>
+            </div>
+        </div>
+        
+        <div class="scene-summary">
+            Echo monitors screens showing probability cascades as they approach the Drift. Captain Voss explains the economics: unstructured humans are worth fortunes to collectors, researchers, and those who believe proximity to chaos brings inspiration.
+        </div>
+        
+        <div class="key-elements">
+            <h2 class="section-title">Key Elements</h2>
+            <ul class="element-list">
+                <li class="element-item">Hunter technology: Prediction nets, pattern locks, chaos dampeners</li>
+                <li class="element-item">Voss's philosophy: "We're not monsters, we're merchants"</li>
+                <li class="element-item">Echo's unease with hunting sentient beings</li>
+                <li class="element-item">The Broker's commission: Capture Kira specifically, "pristine and uncorrupted"</li>
+            </ul>
+        </div>
+        
+        <div class="scene-content">
+            <div class="content-text">
+                <h2>Hunter Ship 'Probability's Edge'</h2>
+                <h3>Cycle 851.2, Third Millennium</h3>
+                
+                <p>Echo's first hunt wasn't supposed to feel wrong.</p>
+
+                <p>The Probability's Edge cut through space like a blade of pure mathematics, its hull lined with prediction arrays that could calculate the trajectory of every particle in a cubic light-year. Inside the observation deck, Echo watched the screens cascade with probability matrices, each one a net cast into the future, searching for the telltale void that marked unstructured presence.</p>
+
+                <p class="voss-text">"Beautiful, isn't it?"</p> Captain Voss stood beside the novice Hunter, his form more machine than man. Prediction implants covered <span class="implant-percentage">87%</span> of his body, chrome and flesh merged into something that made probability calculations as naturally as breathing. <span class="voss-text">"The dance of certainty against chaos."</span></p>
+
+                <p>Echo nodded, not trusting their voice. Three weeks since recruitment. Three weeks of training that felt more like indoctrination. Three weeks of being told that hunting unstructured humans was not just profitable but necessary.</p>
+
+                <p class="voss-text">"Tell me again,"</p> Voss commanded, his artificial eyes never leaving the screens. <span class="voss-text">"Why do we hunt?"</span></p>
+
+                <p>Echo recited the catechism: <span class="echo-text">"Because chaos unchecked spreads like cancer. Because the unstructured disrupt markets, corrupt systems, and threaten the stability billions depend on. Because someone must maintain order."</span></p>
+
+                <p class="voss-text">"And?"</p>
+
+                <p class="echo-text">"And because they're worth more than star systems to those who know their value."</p>
+
+                <p>Voss smiled, an expression that didn't reach the mechanical portions of his face. <span class="voss-text">"Exactly. We're not monsters, Echo. We're merchants. And today, we're going to be very, very rich."</span></p>
+
+                <p>The screens flared with new data. There—Sector Theta-9, coordinates that officially held nothing but empty space. The prediction matrices showed a wound in reality, a place where futures refused to converge.</p>
+
+                <p class="hunter-text">"The Drift,"</p> Nexus announced, the ship's AI speaking through speakers that vibrated with barely contained excitement. <span class="hunter-text">"Seventeen unstructured signatures detected. Ninety-three percent probability of target designation 'Kira' among them."</span></p>
+
+                <p>Echo pulled up Kira's file, though they'd memorized it weeks ago. Female, approximately 28 standard years, brown/blonde/impossible hair, height variable. The only unstructured human with a name rather than a designation. The only one who'd allegedly made contact with Collective AIs and survived.</p>
+
+                <div class="commission-display">
+                    <div class="title">Broker Commission #7749</div>
+                    <div class="target">Target: KIRA</div>
+                    <div>Condition: Pristine, Uncorrupted by pattern locks</div>
+                    <div class="price">Payment: Whatever you desire</div>
+                </div>
+
+                <p class="echo-text">"Whatever we desire,"</p> Echo repeated softly.</p>
+
+                <p class="voss-text">"I desire retirement,"</p> Voss said. <span class="voss-text">"One last hunt, one perfect capture, and I can finally stop fighting the future. My implants are at 87% integration. Past 90%, and I'll lose the ability to process unstructured presence at all. I'll become too perfect to perceive imperfection."</span></p>
+
+                <p>He turned to the crew stations. Trap and Cage, the twin Hunters, synchronized their movements as they prepared the capture equipment. They shared prediction algorithms through neural link, each one processing half of a unified probability matrix. Where one zigged, the other zagged, creating an inescapable net of calculated futures.</p>
+
+                <p class="hunter-text">"Prediction nets charged to maximum,"</p> Trap reported.</p>
+
+                <p class="hunter-text">"Pattern locks calibrated for chaos-class entities,"</p> Cage confirmed.</p>
+
+                <p class="hunter-text">"Dampener fields ready to deploy,"</p> Nexus added. <span class="hunter-text">"Though I must note—dampeners have only 43% success rate against true unstructured."</span></p>
+
+                <p class="voss-text">"Then we'll rely on skill,"</p> Voss decided. He activated the ship's intercom. <span class="voss-text">"All hands, prepare for chaos proximity. Remember your training. Trust your implants. Don't try to understand them—just predict and capture."</span></p>
+
+                <p>Echo felt their own implants warming—just <span class="implant-percentage">23%</span> integration, enough to enhance reflexes and process probability streams without losing human intuition. The recruitment officer had said it was the perfect balance for a Hunter. Enough machine to track chaos, enough human to survive it.</p>
+
+                <p>But as they watched the Drift grow larger on the screens, a massive collection of impossible architecture defying every law of physics, Echo wondered if any amount of integration was enough.</p>
+
+                <p class="echo-text">"Sir,"</p> they said, hating how young their voice sounded. <span class="echo-text">"The file mentions Kira can speak in ways that damage prediction algorithms. What if—"</span></p>
+
+                <p class="voss-text">"That's why we have dampeners,"</p> Voss interrupted. <span class="voss-text">"And why we don't listen. We observe, we calculate, we capture. We don't engage."</span></p>
+
+                <p class="echo-text">"But she's sapient. They all are. Doesn't that—"</p>
+
+                <p class="voss-text">"Make them more valuable?"</p> Voss finished. <span class="voss-text">"Yes. Sapient chaos is worth exponentially more than random noise. The Broker's clients pay premium for consciousness that can't be predicted."</span></p>
+
+                <p>Echo wanted to ask why anyone would pay so much for unpredictability. But the screens were showing individual life signs now, and one of them pulsed with a signature that made their implants ache.</p>
+
+                <p class="hunter-text">"Target acquired,"</p> Nexus announced. <span class="hunter-text">"Kira located in section seven of the Drift. She appears to be... waiting?"</span></p>
+
+                <p>On the screen, a figure stood on an impossible balcony that jutted out into space without protection. She waved at their sensors, a gesture that somehow registered as both greeting and warning.</p>
+
+                <p class="echo-text">"She knows we're here,"</p> Echo said.</p>
+
+                <p class="voss-text">"They always know,"</p> Voss replied. <span class="voss-text">"The unstructured exist partially outside causality. They see us coming before we decide to come. But knowing and escaping are different things."</span></p>
+
+                <p>He turned to address the crew. <span class="voss-text">"Remember—we're not killers. We're preservationists. Every unstructured we capture is protected, studied, treasured. They live better lives in containment than they ever could in this chaotic drift."</span></p>
+
+                <p>Echo wondered if Kira would agree. On the screen, she had started dancing—movements that followed no rhythm, created no pattern, yet somehow seemed perfectly choreographed.</p>
+
+                <p class="voss-text">"Begin approach,"</p> Voss ordered. <span class="voss-text">"Deploy forward dampeners. Trap, Cage—prepare for insertion. Echo, you're with me. Time to earn your implants."</span></p>
+
+                <p>As the Probability's Edge moved toward the Drift, Echo felt something their training hadn't prepared them for: doubt. Every prediction showed successful capture. Every calculation confirmed their advantage.</p>
+
+                <p>So why did it feel like they were the ones walking into a trap?</p>
+
+                <p class="voss-text">"First rule of hunting the unstructured,"</p> Voss said, checking his equipment one final time. <span class="voss-text">"Never trust your feelings. Trust the math."</span></p>
+
+                <p>Echo nodded, pushing doubt aside. But as they prepared to hunt a human whose only crime was unpredictability, a treacherous thought surfaced:</p>
+
+                <p class="echo-text">What if the math was wrong?</p>
+
+                <p class="echo-text">What if it had always been wrong?</p>
+
+                <p>The Probability's Edge docked with the Drift, and there was no more time for questions. Only the hunt remained. And somewhere in that impossible structure, Kira was waiting.</p>
+
+                <p>Dancing to music only she could hear.</p>
+
+                <hr style="margin: 40px 0; border: 1px solid #00ff88; opacity: 0.3;">
+
+                <p style="text-align: center; font-style: italic; color: #888;">End Scene 1</p>
+            </div>
+        </div>
+        
+        <nav class="nav-buttons">
+            <a href="../../chapter_02_church_of_incomputability/scene_04_the_hunt_begins/" class="nav-button">← Previous Scene</a>
+            <a href="../" class="nav-button">↑ Back to Chapter</a>
+            <a href="../scene_02_the_hunt/" class="nav-button">Next Scene →</a>
+        </nav>
+    </div>
+    
+    <script>
+        // Generate matrix rain effect with probability symbols
+        function initMatrix() {
+            const matrix = document.getElementById('dataMatrix');
+            const chars = '0123456789%∞∑∏∫√±≈≠><=$*#@';
+            const columns = Math.floor(window.innerWidth / 20);
+            
+            for (let i = 0; i < columns; i++) {
+                const column = document.createElement('div');
+                column.className = 'matrix-column';
+                column.style.setProperty('--duration', Math.random() * 10 + 's');
+                column.style.setProperty('--offset', Math.random());
+                column.style.left = i * 20 + 'px';
+                
+                let content = '';
+                for (let j = 0; j < 100; j++) {
+                    content += chars.charAt(Math.floor(Math.random() * chars.length)) + '\n';
+                }
+                column.textContent = content;
+                
+                matrix.appendChild(column);
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initMatrix();
+        });
+    </script>
+</body>
+</html>
